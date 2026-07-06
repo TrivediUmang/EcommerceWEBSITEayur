@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-vj3mpmp^rq$7-)s-%$5%s6t!at)#svc37(z=67tt$p*0@i$qws'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -121,8 +121,10 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
 
     BASE_DIR / "static",
+    
 
 ]
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 INSTALLED_APPS = [
 
