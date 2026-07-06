@@ -1,0 +1,189 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>VedaRoots</title>
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header>
+
+        <nav class="navbar">
+
+            <div class="logo">
+                🌿 <span>VedaRoots</span>
+            </div>
+
+            <ul class="nav-links">
+
+                <li><a href="/">Home</a></li>
+
+                <li><a href="{% url 'shop' %}">Shop</a></li>
+
+                <li><a href="{% url 'about' %}">about</a></li>
+               <li><a href="{% url 'blogs' %}">blogs</a></li>
+
+                <li><a href="{% url 'contact' %}">contact</a></li>
+
+            </ul>
+
+            <div class="nav-icons">
+
+    <a href="{% url 'login' %}" class="login-btn">
+        Login
+    </a>
+
+    <a href="{% url 'cart' %}" class="cart-btn">
+    
+   
+    🛒 Cart
+</a>
+
+</div>
+
+        </nav>
+
+    </header>
+
+    <!-- ================= MAIN ================= -->
+
+    <main>
+
+        {% block content %}
+        {% endblock %}
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>© 2026 VedaRoots. All Rights Reserved.</p>
+
+    </footer>
+
+    <!-- ================= SWIPER JS ================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+
+        const swiper = new Swiper(".categorySwiper", {
+
+            slidesPerView: 4,
+
+            spaceBetween: 30,
+
+            loop: true,
+
+            speed: 1200,
+
+            grabCursor: true,
+
+            centeredSlides: false,
+
+            autoplay: {
+
+                delay: 4000,
+
+                disableOnInteraction: false,
+
+                pauseOnMouseEnter: true,
+
+            },
+
+            navigation: {
+
+                nextEl: ".swiper-button-next",
+
+                prevEl: ".swiper-button-prev",
+
+            },
+
+            pagination: {
+
+                el: ".swiper-pagination",
+
+                clickable: true,
+
+            },
+
+            breakpoints: {
+
+                0: {
+                    slidesPerView: 1
+                },
+
+                576: {
+                    slidesPerView: 2
+                },
+
+                768: {
+                    slidesPerView: 3
+                },
+
+                1024: {
+                    slidesPerView: 4
+                }
+
+            }
+
+        });
+
+    </script>
+    
+    <script>
+
+const counters = document.querySelectorAll(".counter");
+
+const speed = 100;
+
+counters.forEach(counter=>{
+
+const updateCount=()=>{
+
+const target=+counter.getAttribute("data-target");
+
+const count=+counter.innerText;
+
+const increment=target/speed;
+
+if(count<target){
+
+counter.innerText=Math.ceil(count+increment);
+
+setTimeout(updateCount,20);
+
+}else{
+
+counter.innerText=target;
+
+}
+
+}
+
+updateCount();
+
+});
+
+</script>
+
+</body>
+
+</html>

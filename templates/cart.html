@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="cart-section">
+
+    <div class="cart-container">
+
+        <h1>🛒 My Shopping Cart</h1>
+
+        {% if cart_items %}
+
+        <div class="cart-wrapper">
+
+            <!-- Left Side -->
+
+            <div class="cart-items">
+
+                {% for item in cart_items %}
+
+                <div class="cart-card">
+
+                    <div class="cart-image">
+
+                        <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+
+                    </div>
+
+                    <div class="cart-details">
+
+                        <h2>{{ item.product.name }}</h2>
+
+                        <h3>₹{{ item.product.price }}</h3>
+
+                        <p><strong>Quantity:</strong> {{ item.quantity }}</p>
+
+                        <p class="subtotal">
+                            <strong>Subtotal:</strong>
+                            ₹{{ item.product.price|floatformat:2 }}
+                        </p>
+
+                        <a href="{% url 'remove_from_cart' item.id %}" class="remove-btn">
+                            🗑 Remove
+                        </a>
+
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+            <!-- Right Side -->
+
+            <div class="summary-box">
+
+                <h2>Order Summary</h2>
+
+                <hr>
+
+                <div class="summary-row">
+
+                    <span>Total</span>
+
+                    <strong>₹{{ total }}</strong>
+
+                </div>
+
+                <a href="#" class="checkout-btn">
+
+                    Proceed To Checkout →
+
+                </a>
+
+            </div>
+
+        </div>
+
+        {% else %}
+
+        <div class="empty-cart">
+
+            <img src="{% static 'images/Cart/image22.jpg' %}" width="220">
+
+            <h2>Your Cart is Empty 😔</h2>
+
+            <p>Add some Ayurvedic products to your cart.</p>
+
+            <a href="{% url 'shop' %}" class="shop-btn">
+
+                Continue Shopping
+
+            </a>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+{% endblock %}

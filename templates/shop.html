@@ -1,0 +1,195 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="shop-page">
+
+    <div class="shop-header">
+
+        <h1>🌿 Our Ayurvedic Store</h1>
+
+        <p>
+            Premium Ayurvedic Products for Healthy Living
+        </p>
+
+    </div>
+
+    <div class="shop-container">
+
+        <!-- Sidebar -->
+
+        <aside class="shop-sidebar">
+
+            <h3>Categories</h3>
+
+            <ul>
+
+                <li>
+
+                    <a href="{% url 'shop' %}">
+
+                        🌿 All Products
+
+                    </a>
+
+                </li>
+
+                {% for category in categories %}
+
+                <li>
+
+                    <a href="{% url 'shop' %}?category={{ category.slug }}">
+
+                        {{ category.name }}
+
+                    </a>
+
+                </li>
+
+                {% endfor %}
+
+            </ul>
+
+        </aside>
+
+        <!-- Right Content -->
+
+        <div class="shop-content">
+
+            <div class="shop-topbar">
+
+                <form method="GET">
+
+                    {% if request.GET.category %}
+
+                    <input
+                        type="hidden"
+                        name="category"
+                        value="{{ request.GET.category }}"
+                    >
+
+                    {% endif %}
+
+                    <input
+                        type="text"
+                        name="search"
+                        value="{{ request.GET.search }}"
+                        placeholder="🔍 Search Products..."
+                    >
+
+                    <select name="sort">
+
+                        <option value="">Sort By</option>
+
+                        <option value="low">Price Low → High</option>
+
+                        <option value="high">Price High → Low</option>
+
+                        <option value="name">A → Z</option>
+
+                    </select>
+
+                    <button>
+
+                        Search
+
+                    </button>
+
+                </form>
+
+            </div>
+
+            <div class="shop-products">
+
+                {% for product in products %}
+
+                <div class="product-card">
+
+                    <div class="product-image">
+
+                        <span class="product-badge">
+
+                            Bestseller
+
+                        </span>
+
+                        <span class="wishlist">
+
+                            ♡
+
+                        </span>
+
+                        {% if product.image %}
+
+                        <img src="{{ product.image.url }}">
+
+                        {% else %}
+
+                        <img src="{% static 'images/Login/login.png' %}">
+
+                        {% endif %}
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <h3>
+
+                            {{ product.name }}
+
+                        </h3>
+
+                        <div class="rating">
+
+                            ⭐⭐⭐⭐⭐
+
+                            <span>(4.9)</span>
+
+                        </div>
+
+                        <p class="product-short">
+
+                            100% Natural Ayurvedic Formula
+
+                        </p>
+
+                        <p class="price">
+
+                            ₹{{ product.price }}
+
+                        </p>
+
+                      
+
+                       <a href="{% url 'add_to_cart' product.id %}" class="add-cart-btn">
+
+    🛒 Add To Cart
+
+</a>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                {% empty %}
+
+                <h2>
+
+                    No Products Found
+
+                </h2>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,578 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- ================= HERO SECTION ================= -->
+
+<section class="hero">
+
+    <div class="hero-left">
+
+        <h1>Ancient Wisdom,<br>Modern Wellness</h1>
+
+        <p>
+            Discover premium Ayurvedic products made with nature's finest ingredients.
+        </p>
+
+        <a href="{% url 'shop' %}" class="hero-btn">
+            Shop Now
+        </a>
+
+    </div>
+
+    <div class="hero-right">
+
+        <img src="{% static 'images/hero/hero1.jpg' %}" alt="Hero Image">
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= SHOP BY CATEGORY ================= -->
+
+<section class="categories">
+
+    <div class="section-title">
+
+        <h2>Shop By Category</h2>
+
+        <p>Explore our premium Ayurvedic product collections.</p>
+
+    </div>
+
+    <div class="swiper categorySwiper">
+
+        <div class="swiper-wrapper">
+
+            <!-- Hair Care -->
+            <div class="swiper-slide">
+                <a href="{% url 'shop' %}?category=hair-care" class="category-link">
+                    <div class="category-card">
+                        <img src="{% static 'images/Hero/Hero2.jpg' %}" alt="Hair Care">
+                        <h3>Hair Care</h3>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Skin Care -->
+            <div class="swiper-slide">
+                <a href="{% url 'shop' %}?category=skin-care" class="category-link">
+                    <div class="category-card">
+                        <img src="{% static 'images/Hero/hero3.jpg' %}" alt="Skin Care">
+                        <h3>Skin Care</h3>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Immunity -->
+            <div class="swiper-slide">
+                <a href="{% url 'shop' %}?category=immunity" class="category-link">
+                    <div class="category-card">
+                        <img src="{% static 'images/Hero/hero4.jpg' %}" alt="Immunity">
+                        <h3>Immunity</h3>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Wellness -->
+            <div class="swiper-slide">
+                <a href="{% url 'shop' %}?category=wellness" class="category-link">
+                    <div class="category-card">
+                        <img src="{% static 'images/Hero/hero5.jpg' %}" alt="Wellness">
+                        <h3>Wellness</h3>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Digestive Care -->
+            <div class="swiper-slide">
+                <a href="{% url 'shop' %}?category=digestive-care" class="category-link">
+                    <div class="category-card">
+                        <img src="{% static 'images/Hero/hero6.jpg' %}" alt="Digestive Care">
+                        <h3>Digestive Care</h3>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Personal Care -->
+            <div class="swiper-slide">
+                <a href="{% url 'shop' %}?category=personal-care" class="category-link">
+                    <div class="category-card">
+                        <img src="{% static 'images/Hero/hero7.jpg' %}" alt="Personal Care">
+                        <h3>Personal Care</h3>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Essential Oils -->
+            <div class="swiper-slide">
+                <a href="{% url 'shop' %}?category=essential-oils" class="category-link">
+                    <div class="category-card">
+                        <img src="{% static 'images/Hero/hero8.jpg' %}" alt="Essential Oils">
+                        <h3>Essential Oils</h3>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Men's Care -->
+            <div class="swiper-slide">
+                <a href="{% url 'shop' %}?category=mens-care" class="category-link">
+                    <div class="category-card">
+                        <img src="{% static 'images/Hero/hero9.jpg' %}" alt="Men's Care">
+                        <h3>Men's Care</h3>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-pagination"></div>
+
+    </div>
+
+    <div class="view-all-wrapper">
+
+        <a href="{% url 'shop' %}" class="view-all-btn">
+
+            🌿 View All Categories →
+
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= FEATURED PRODUCTS ================= -->
+
+<section class="featured-products">
+
+    <div class="section-title">
+
+        <h2>Featured Products</h2>
+
+        <p>Our Best Selling Ayurvedic Products</p>
+
+    </div>
+
+    <div class="product-grid">
+
+        {% for product in products %}
+
+        <div class="product-card">
+
+            <div class="product-image">
+
+                <span class="product-badge">
+
+                    Bestseller
+
+                </span>
+
+                <span class="wishlist">
+
+                    ♡
+
+                </span>
+
+                {% if product.image %}
+
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+
+                {% else %}
+
+                    <img src="{% static 'images/no-image.png' %}" alt="No Image">
+
+                {% endif %}
+
+            </div>
+
+            <div class="product-info">
+
+                <h3>{{ product.name }}</h3>
+
+                <div class="rating">
+
+                    ⭐⭐⭐⭐⭐
+
+                    <span>(4.9)</span>
+
+                </div>
+
+                <p class="product-short">
+
+                    Premium Ayurvedic Product made with Natural Herbs.
+
+                </p>
+
+                <p class="price">
+
+                    ₹{{ product.price }}
+
+                </p>
+
+                <button class="cart-btn">
+
+                    🛒 Add To Cart
+
+                </button>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <div class="no-products">
+
+            <h3>No Featured Products Available</h3>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <div class="view-all-wrapper">
+
+        <a href="{% url 'shop' %}" class="view-all-btn">
+
+            🌿 View All Products →
+
+        </a>
+
+    </div>
+
+</section>
+
+<!-- ================= WHY CHOOSE US ================= -->
+
+<section class="why-us">
+
+    <div class="section-title">
+
+        <h2>Why Choose VedaRoots?</h2>
+
+        <p>Experience the goodness of Ayurveda with trust, purity and quality.</p>
+
+    </div>
+
+    <div class="why-grid">
+
+        <div class="why-card">
+
+            <div class="why-icon">🌿</div>
+
+            <h3>100% Natural</h3>
+
+            <p>
+                Carefully selected herbs and natural ingredients for pure wellness.
+            </p>
+
+        </div>
+
+        <div class="why-card">
+
+            <div class="why-icon">🧪</div>
+
+            <h3>Lab Tested</h3>
+
+            <p>
+                Every product is tested to ensure the highest quality and safety.
+            </p>
+
+        </div>
+
+        <div class="why-card">
+
+            <div class="why-icon">🚚</div>
+
+            <h3>Fast Delivery</h3>
+
+            <p>
+                Quick and secure delivery across India with premium packaging.
+            </p>
+
+        </div>
+
+        <div class="why-card">
+
+            <div class="why-icon">♻️</div>
+
+            <h3>Eco Friendly</h3>
+
+            <p>
+                Sustainable products and recyclable packaging for a greener future.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= ACHIEVEMENTS ================= -->
+
+<section class="stats">
+
+    <div class="section-title">
+
+        <h2>Trusted By Thousands</h2>
+
+        <p>Our growing community inspires us to deliver the best Ayurvedic products every day.</p>
+
+    </div>
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+            <h2 class="counter" data-target="15000">0</h2>
+            <p>Happy Customers</p>
+        </div>
+
+        <div class="stat-card">
+            <h2 class="counter" data-target="250">0</h2>
+            <p>Premium Products</p>
+        </div>
+
+        <div class="stat-card">
+            <h2 class="counter" data-target="98">0</h2>
+            <p>Positive Reviews (%)</p>
+        </div>
+
+        <div class="stat-card">
+            <h2 class="counter" data-target="100">0</h2>
+            <p>Natural Ingredients (%)</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+
+<section class="testimonials">
+
+    <div class="section-title">
+
+        <h2>What Our Customers Say</h2>
+
+        <p>Trusted by thousands of happy customers across India.</p>
+
+    </div>
+
+    <div class="testimonial-grid">
+
+        <div class="testimonial-card">
+
+            <div class="stars">★★★★★</div>
+
+            <p>
+                "VedaRoots Hair Oil has completely transformed my hair. It feels stronger, healthier, and shinier than ever before."
+            </p>
+
+            <h4>Priya Sharma</h4>
+
+            <span>Delhi</span>
+
+        </div>
+
+        <div class="testimonial-card">
+
+            <div class="stars">★★★★★</div>
+
+            <p>
+                "The Aloe Vera Gel is incredibly refreshing. I use it daily, and my skin feels soft and naturally hydrated."
+            </p>
+
+            <h4>Rahul Verma</h4>
+
+            <span>Noida</span>
+
+        </div>
+
+        <div class="testimonial-card">
+
+            <div class="stars">★★★★★</div>
+
+            <p>
+                "Excellent quality products, beautiful packaging and super fast delivery. Highly recommended!"
+            </p>
+
+            <h4>Neha Gupta</h4>
+
+            <span>Jaipur</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= AYURVEDIC INGREDIENTS ================= -->
+
+<section class="ingredients">
+
+    <div class="section-title">
+
+        <h2>Power of Ayurveda</h2>
+
+        <p>Nature's finest ingredients for complete wellness.</p>
+
+    </div>
+
+    <div class="ingredient-grid">
+
+        <div class="ingredient-card">
+            <h3>🌿 Neem</h3>
+            <p>Purifies skin and helps fight acne naturally.</p>
+        </div>
+
+        <div class="ingredient-card">
+            <h3>🍃 Tulsi</h3>
+            <p>Boosts immunity and protects against infections.</p>
+        </div>
+
+        <div class="ingredient-card">
+            <h3>🟡 Turmeric</h3>
+            <p>Known for glowing skin and anti-inflammatory benefits.</p>
+        </div>
+
+        <div class="ingredient-card">
+            <h3>🥥 Aloe Vera</h3>
+            <p>Deep hydration for healthy skin and hair.</p>
+        </div>
+
+        <div class="ingredient-card">
+            <h3>🌱 Ashwagandha</h3>
+            <p>Supports stress relief and overall wellness.</p>
+        </div>
+
+        <div class="ingredient-card">
+            <h3>🍯 Amla</h3>
+            <p>Rich in Vitamin C for stronger hair and immunity.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= NEWSLETTER ================= -->
+
+<section class="newsletter">
+
+    <div class="newsletter-content">
+
+        <h2>Join the VedaRoots Family 🌿</h2>
+
+        <p>
+
+            Subscribe to receive exclusive offers, wellness tips, and the latest Ayurvedic updates.
+
+        </p>
+
+        <form>
+
+            <input
+                type="email"
+                placeholder="Enter your email address"
+            >
+
+            <button>
+
+                Subscribe
+
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FAQ ================= -->
+
+<section class="faq">
+
+    <div class="section-title">
+
+        <h2>Frequently Asked Questions</h2>
+
+    </div>
+
+    <div class="faq-container">
+
+        <div class="faq-item">
+            <h3>Are your products 100% Ayurvedic?</h3>
+            <p>Yes, all products are made using authentic Ayurvedic ingredients.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Do you deliver across India?</h3>
+            <p>Yes, we offer fast and secure delivery across India.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Are products suitable for all skin types?</h3>
+            <p>Most products are suitable for all skin types. Product descriptions mention any specific recommendations.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= TRUST BADGES ================= -->
+
+<section class="trust-section">
+
+    <div class="trust-grid">
+
+        <div class="trust-card">
+            🌿
+            <h3>100% Natural</h3>
+        </div>
+
+        <div class="trust-card">
+            ✔️
+            <h3>Lab Tested</h3>
+        </div>
+
+        <div class="trust-card">
+            🚚
+            <h3>Fast Delivery</h3>
+        </div>
+
+        <div class="trust-card">
+            🔒
+            <h3>Secure Payments</h3>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SHIPPING STRIP ================= -->
+
+<section class="shipping-strip">
+
+    <div>🚚 Free Shipping Above ₹999</div>
+
+    <div>💳 Secure Payments</div>
+
+    <div>🔄 Easy Returns</div>
+
+    <div>🌿 100% Ayurvedic</div>
+
+</section>
+
+{% endblock %}

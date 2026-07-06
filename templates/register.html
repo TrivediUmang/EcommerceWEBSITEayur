@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="login-section">
+
+    <div class="login-container">
+
+        <!-- Left Side -->
+
+        <div class="login-image">
+
+            <img src="{% static 'images/login/login.png' %}" alt="Register">
+
+        </div>
+
+        <!-- Right Side -->
+
+        <div class="login-form">
+
+            <h2>Create Account 🌿</h2>
+
+            <p>Join the VedaRoots family and start your wellness journey.</p>
+
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="error-message">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <input
+                    type="text"
+                    name="first_name"
+                    placeholder="First Name"
+                    required
+                >
+
+                <input
+                    type="text"
+                    name="last_name"
+                    placeholder="Last Name"
+                    required
+                >
+
+                <input
+                    type="text"
+                    name="username"
+                    placeholder="Username"
+                    required
+                >
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Email Address"
+                    required
+                >
+
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    required
+                >
+
+                <input
+                    type="password"
+                    name="confirm_password"
+                    placeholder="Confirm Password"
+                    required
+                >
+
+                <button type="submit">
+
+                    Create Account
+
+                </button>
+
+            </form>
+
+            <p class="register-text">
+
+                Already have an account?
+
+                <a href="{% url 'login' %}">
+
+                    Login Here
+
+                </a>
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

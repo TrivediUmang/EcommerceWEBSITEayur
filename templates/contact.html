@@ -1,0 +1,195 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- ================= CONTACT HERO ================= -->
+
+<section class="contact-hero">
+
+    <div class="contact-overlay"></div>
+
+    <div class="contact-hero-content">
+
+        <h1>Get In Touch</h1>
+
+        <p>
+            We'd love to hear from you. Whether you have a question about our products,
+            your order, or Ayurveda, our team is always ready to help.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ================= CONTACT INFO ================= -->
+
+<section class="contact-info">
+
+    <div class="contact-card">
+
+        <div class="contact-icon">📍</div>
+
+        <h3>Our Address</h3>
+
+        <p>
+            VedaRoots Pvt. Ltd.<br>
+            Meerut, Uttar Pradesh, India
+        </p>
+
+    </div>
+
+    <div class="contact-card">
+
+        <div class="contact-icon">📞</div>
+
+        <h3>Call Us</h3>
+
+        <p>
+            +91 98765 43210
+        </p>
+
+    </div>
+
+    <div class="contact-card">
+
+        <div class="contact-icon">✉️</div>
+
+        <h3>Email</h3>
+
+        <p>
+            support@vedaroots.com
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ================= CONTACT FORM ================= -->
+
+<section class="contact-form-section">
+
+    <div class="contact-form-container">
+
+        <div class="contact-left">
+
+            <h2>Send Us A Message</h2>
+
+            <p>
+                Fill out the form below and we'll get back to you as soon as possible.
+            </p>
+
+            <form method="POST">
+
+                {% csrf_token %}
+                {% if success %}
+
+<div class="success-message">
+
+    ✅ Thank you! Your message has been sent successfully.
+
+</div>
+
+{% endif %}
+
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Your Name"
+                    required
+                >
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Your Email"
+                    required
+                >
+
+                <input
+                    type="text"
+                    name="phone"
+                    placeholder="Phone Number"
+                    required
+                >
+
+                <input
+                    type="text"
+                    name="subject"
+                    placeholder="Subject"
+                    required
+                >
+
+                <textarea
+                    name="message"
+                    rows="6"
+                    placeholder="Write your message..."
+                    required
+                ></textarea>
+
+                <button type="submit">
+
+                    🌿 Send Message
+
+                </button>
+
+            </form>
+
+        </div>
+
+        <div class="contact-right">
+
+            <img src="{% static 'images/contact/contact.png' %}" alt="Contact">
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ================= GOOGLE MAP ================= -->
+
+<section class="map-section">
+
+    <iframe
+        src="https://www.google.com/maps?q=Meerut,+Uttar+Pradesh&output=embed"
+        width="100%"
+        height="450"
+        style="border:0;"
+        loading="lazy">
+    </iframe>
+
+</section>
+<!-- ================= FAQ ================= -->
+
+<section class="faq-section">
+
+    <div class="section-title">
+
+        <h2>Frequently Asked Questions</h2>
+
+        <p>Answers to common questions about VedaRoots.</p>
+
+    </div>
+
+    <div class="faq-container">
+
+        <div class="faq-item">
+            <h3>🌿 Are your products 100% Ayurvedic?</h3>
+            <p>Yes. Our products are made using carefully selected natural herbs and traditional Ayurvedic formulations.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>🚚 How many days does delivery take?</h3>
+            <p>Orders are usually delivered within 3–7 business days depending on your location.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>💳 Which payment methods do you accept?</h3>
+            <p>We accept UPI, Debit Cards, Credit Cards, Net Banking and Cash on Delivery (where available).</p>
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

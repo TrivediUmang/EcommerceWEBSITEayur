@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="login-section">
+
+    <div class="login-container">
+
+        <!-- Left Side -->
+
+        <div class="login-image">
+
+            <img src="{% static 'images/login/login.png' %}" alt="Login">
+
+        </div>
+
+        <!-- Right Side -->
+
+        <div class="login-form">
+
+            <h2>Welcome Back 🌿</h2>
+
+            <p>Login to continue your Ayurvedic wellness journey.</p>
+
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="error-message">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <input
+                    type="text"
+                    name="username"
+                    placeholder="Username"
+                    required
+                >
+
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    required
+                >
+
+                <button type="submit">
+
+                    Login
+
+                </button>
+
+            </form>
+
+            <p class="register-text">
+        Don't have an account?
+    <a href="{% url 'register' %}">Register Here</a>
+</p>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

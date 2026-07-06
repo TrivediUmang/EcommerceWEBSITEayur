@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="blogs-page">
+
+    <div class="section-title">
+
+        <h2>Ayurvedic Blogs</h2>
+
+        <p>Learn Natural Health & Wellness Tips</p>
+
+    </div>
+
+    <div class="blogs-grid">
+
+        {% for blog in blogs %}
+
+        <div class="blog-card">
+
+            <img src="{{ blog.image.url }}" alt="{{ blog.title }}">
+
+            <div class="blog-content">
+
+                <span class="blog-date">
+
+                    {{ blog.created_at }}
+
+                </span>
+
+                <h3>{{ blog.title }}</h3>
+
+                <p>
+
+                    {{ blog.short_description }}
+
+                </p>
+
+                <a href="#" class="read-more">
+
+                    Read More →
+
+                </a>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}
