@@ -16,9 +16,7 @@ SECRET_KEY = "django-insecure-vj3mpmp^rq$7-)s-%$5%s6t!at)#svc37(z=67tt$p*0@i$qws
 
 DEBUG = False
 
-ALLOWED_HOSTS = [
-    "*",
-]
+ALLOWED_HOSTS = ["*"]
 
 # -------------------------------------------------
 # Installed Apps
@@ -59,7 +57,7 @@ MIDDLEWARE = [
 ]
 
 # -------------------------------------------------
-# URLs
+# URLS
 # -------------------------------------------------
 
 ROOT_URLCONF = "config.urls"
@@ -97,7 +95,7 @@ DATABASES = {
 }
 
 # -------------------------------------------------
-# Password Validation
+# Password Validators
 # -------------------------------------------------
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -139,10 +137,8 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
 # -------------------------------------------------
-# Cloudinary Configuration
+# Cloudinary
 # -------------------------------------------------
 
 cloudinary.config(
@@ -151,8 +147,6 @@ cloudinary.config(
     api_secret=os.getenv("CLOUDINARY_API_SECRET"),
     secure=True,
 )
-
-# Django 6 Storage Configuration
 
 STORAGES = {
     "default": {
