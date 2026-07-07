@@ -5,20 +5,22 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.shortcuts import redirect
 
+# def home(request):
+
+#     # Sirf 4 Featured Products
+#     products = Product.objects.all()[:3]
+
+#     categories = Category.objects.all()
+
+#     context = {
+#         "products": products,
+#         "categories": categories
+#     }
+#     print("*******************")
+#     return render(request, "home.html", context)
 def home(request):
-
-    # Sirf 4 Featured Products
-    products = Product.objects.all()[:3]
-
-    categories = Category.objects.all()
-
-    context = {
-        "products": products,
-        "categories": categories
-    }
-
-    return render(request, "home.html", context)
-
+    print("View Called")
+    return render(request, "home.html")
 
 def shop(request):
 
