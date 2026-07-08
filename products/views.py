@@ -155,4 +155,7 @@ def register(request):
         return redirect("login")
 
     return render(request, "register.html")
+
+def add_to_cart(request, product_id):
+    return redirect("shop")
     

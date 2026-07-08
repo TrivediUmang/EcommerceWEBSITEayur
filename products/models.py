@@ -7,11 +7,12 @@ class Category(models.Model):
 
     name = models.CharField(max_length=100)
 
-    image = models.ImageField(
-        upload_to="categories/",
-        blank=True,
-        null=True
-    )
+    image = models.CharField(
+    max_length=255,
+    blank=True,
+    null=True
+)
+    
 
     slug = models.SlugField(
         max_length=100,
@@ -69,9 +70,12 @@ class Blog(models.Model):
         unique=True
     )
 
-    image = models.ImageField(
-        upload_to="blogs/"
-    )
+    image = models.CharField(
+    max_length=200,
+    blank=True,
+    null=True
+)
+    
 
     short_description = models.CharField(
         max_length=300

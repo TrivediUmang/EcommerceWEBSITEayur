@@ -6,11 +6,8 @@
 <section class="blogs-page">
 
     <div class="section-title">
-
         <h2>Ayurvedic Blogs</h2>
-
         <p>Learn Natural Health & Wellness Tips</p>
-
     </div>
 
     <div class="blogs-grid">
@@ -19,33 +16,41 @@
 
         <div class="blog-card">
 
-            <img src="{{ blog.image.url }}" alt="{{ blog.title }}">
+            {% if forloop.counter == 1 %}
+                <img src="{% static 'images/blogs/photo1.jpg' %}" alt="{{ blog.title }}">
+            {% elif forloop.counter == 2 %}
+                <img src="{% static 'images/blogs/photo2.jpg' %}" alt="{{ blog.title }}">
+            {% elif forloop.counter == 3 %}
+                <img src="{% static 'images/blogs/photo3.jpg' %}" alt="{{ blog.title }}">
+            {% elif forloop.counter == 4 %}
+                <img src="{% static 'images/blogs/photo4.jpg' %}" alt="{{ blog.title }}">
+            {% elif forloop.counter == 5 %}
+                <img src="{% static 'images/blogs/photo5.jpg' %}" alt="{{ blog.title }}">
+            {% else %}
+                <img src="{% static 'images/blogs/photo1.jpg' %}" alt="{{ blog.title }}">
+            {% endif %}
 
             <div class="blog-content">
 
                 <span class="blog-date">
-
-                    {{ blog.created_at }}
-
+                    {{ blog.created_at|date:"d M Y" }}
                 </span>
 
                 <h3>{{ blog.title }}</h3>
 
-                <p>
-
-                    {{ blog.short_description }}
-
-                </p>
+                <p>{{ blog.short_description }}</p>
 
                 <a href="#" class="read-more">
-
                     Read More →
-
                 </a>
 
             </div>
 
         </div>
+
+        {% empty %}
+
+        <h2>No Blogs Available</h2>
 
         {% endfor %}
 

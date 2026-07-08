@@ -148,8 +148,9 @@
 </section>
 
 
-
 <!-- ================= FEATURED PRODUCTS ================= -->
+
+{% load static %}
 
 <section class="featured-products">
 
@@ -163,79 +164,134 @@
 
     <div class="product-grid">
 
-        {% for product in products %}
+        <!-- Product 1 -->
 
         <div class="product-card">
 
             <div class="product-image">
 
                 <span class="product-badge">
-
                     Bestseller
-
                 </span>
 
                 <span class="wishlist">
-
                     ♡
-
                 </span>
 
-                {% if product.image %}
-
-                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
-
-                {% else %}
-
-                    <img src="{% static 'images/no-image.png' %}" alt="No Image">
-
-                {% endif %}
+                <img src="{% static 'images/featured/product1.jpg' %}" alt="Termeric Powder">
 
             </div>
 
             <div class="product-info">
 
-                <h3>{{ product.name }}</h3>
+                <h3>Termeric Powder</h3>
 
                 <div class="rating">
-
                     ⭐⭐⭐⭐⭐
-
                     <span>(4.9)</span>
-
                 </div>
 
                 <p class="product-short">
-
-                    Premium Ayurvedic Product made with Natural Herbs.
-
+                    Premium Ayurvedic Termeric Powder.
                 </p>
 
                 <p class="price">
-
-                    ₹{{ product.price }}
-
+                    ₹399
                 </p>
 
                 <button class="cart-btn">
-
                     🛒 Add To Cart
-
                 </button>
 
             </div>
 
         </div>
 
-        {% empty %}
+        <!-- Product 2 -->
 
-        <div class="no-products">
+        <div class="product-card">
 
-            <h3>No Featured Products Available</h3>
+            <div class="product-image">
+
+                <span class="product-badge">
+                    Bestseller
+                </span>
+
+                <span class="wishlist">
+                    ♡
+                </span>
+
+                <img src="{% static 'images/featured/product2.jpg' %}" alt="Herbal Tea">
+
+            </div>
+
+            <div class="product-info">
+
+                <h3>Herbal Tea</h3>
+
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐
+                    <span>(4.8)</span>
+                </div>
+
+                <p class="product-short">
+                    Refreshing Ayurvedic Herbal Tea for Better Immunity.
+                </p>
+
+                <p class="price">
+                    ₹249
+                </p>
+
+                <button class="cart-btn">
+                    🛒 Add To Cart
+                </button>
+
+            </div>
 
         </div>
 
-        {% endfor %}
+        <!-- Product 3 -->
+
+        <div class="product-card">
+
+            <div class="product-image">
+
+                <span class="product-badge">
+                    Bestseller
+                </span>
+
+                <span class="wishlist">
+                    ♡
+                </span>
+
+                <img src="{% static 'images/featured/product3.jpg' %}" alt="Neem Soap">
+
+            </div>
+
+            <div class="product-info">
+
+                <h3>Neem Soap</h3>
+
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐
+                    <span>(4.9)</span>
+                </div>
+
+                <p class="product-short">
+                    100% Natural Neem Soap for Healthy & Glowing Skin.
+                </p>
+
+                <p class="price">
+                    ₹149
+                </p>
+
+                <button class="cart-btn">
+                    🛒 Add To Cart
+                </button>
+
+            </div>
+
+        </div>
 
     </div>
 
@@ -253,13 +309,16 @@
 
 <!-- ================= WHY CHOOSE US ================= -->
 
-<section class="why-us">
+<section class="why-choose">
 
-    <div class="section-title">
+    <div class="why-title">
 
         <h2>Why Choose VedaRoots?</h2>
 
-        <p>Experience the goodness of Ayurveda with trust, purity and quality.</p>
+        <p>
+            Experience the goodness of Ayurveda with trust, purity,
+            premium ingredients and scientifically tested products.
+        </p>
 
     </div>
 
@@ -272,7 +331,7 @@
             <h3>100% Natural</h3>
 
             <p>
-                Carefully selected herbs and natural ingredients for pure wellness.
+                Made using authentic Ayurvedic herbs with zero harmful chemicals.
             </p>
 
         </div>
@@ -284,7 +343,7 @@
             <h3>Lab Tested</h3>
 
             <p>
-                Every product is tested to ensure the highest quality and safety.
+                Every product is carefully tested to ensure purity and safety.
             </p>
 
         </div>
@@ -296,19 +355,19 @@
             <h3>Fast Delivery</h3>
 
             <p>
-                Quick and secure delivery across India with premium packaging.
+                Lightning-fast delivery across India with secure packaging.
             </p>
 
         </div>
 
         <div class="why-card">
 
-            <div class="why-icon">♻️</div>
+            <div class="why-icon">🔒</div>
 
-            <h3>Eco Friendly</h3>
+            <h3>Secure Payments</h3>
 
             <p>
-                Sustainable products and recyclable packaging for a greener future.
+                Safe checkout with trusted payment gateways and encrypted security.
             </p>
 
         </div>
@@ -318,96 +377,50 @@
 </section>
 
 <!-- ================= ACHIEVEMENTS ================= -->
+<section class="trusted-section">
 
-<section class="stats">
-
-    <div class="section-title">
+    <div class="trusted-title">
 
         <h2>Trusted By Thousands</h2>
 
-        <p>Our growing community inspires us to deliver the best Ayurvedic products every day.</p>
+        <p>
+            Loved by customers across India for our authentic Ayurvedic
+            products and premium quality.
+        </p>
 
     </div>
 
-    <div class="stats-grid">
+    <div class="trusted-grid">
 
-        <div class="stat-card">
-            <h2 class="counter" data-target="15000">0</h2>
+        <div class="trusted-card">
+
+            <h3 class="counter" data-target="15000">0</h3>
+
             <p>Happy Customers</p>
+
         </div>
 
-        <div class="stat-card">
-            <h2 class="counter" data-target="250">0</h2>
+        <div class="trusted-card">
+
+            <h3 class="counter" data-target="250">0</h3>
+
             <p>Premium Products</p>
+
         </div>
 
-        <div class="stat-card">
-            <h2 class="counter" data-target="98">0</h2>
+        <div class="trusted-card">
+
+            <h3 class="counter" data-target="98">0</h3>
+
             <p>Positive Reviews (%)</p>
+
         </div>
 
-        <div class="stat-card">
-            <h2 class="counter" data-target="100">0</h2>
+        <div class="trusted-card">
+
+            <h3 class="counter" data-target="100">0</h3>
+
             <p>Natural Ingredients (%)</p>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- ================= TESTIMONIALS ================= -->
-
-<section class="testimonials">
-
-    <div class="section-title">
-
-        <h2>What Our Customers Say</h2>
-
-        <p>Trusted by thousands of happy customers across India.</p>
-
-    </div>
-
-    <div class="testimonial-grid">
-
-        <div class="testimonial-card">
-
-            <div class="stars">★★★★★</div>
-
-            <p>
-                "VedaRoots Hair Oil has completely transformed my hair. It feels stronger, healthier, and shinier than ever before."
-            </p>
-
-            <h4>Priya Sharma</h4>
-
-            <span>Delhi</span>
-
-        </div>
-
-        <div class="testimonial-card">
-
-            <div class="stars">★★★★★</div>
-
-            <p>
-                "The Aloe Vera Gel is incredibly refreshing. I use it daily, and my skin feels soft and naturally hydrated."
-            </p>
-
-            <h4>Rahul Verma</h4>
-
-            <span>Noida</span>
-
-        </div>
-
-        <div class="testimonial-card">
-
-            <div class="stars">★★★★★</div>
-
-            <p>
-                "Excellent quality products, beautiful packaging and super fast delivery. Highly recommended!"
-            </p>
-
-            <h4>Neha Gupta</h4>
-
-            <span>Jaipur</span>
 
         </div>
 
@@ -418,80 +431,57 @@
 
 <!-- ================= AYURVEDIC INGREDIENTS ================= -->
 
-<section class="ingredients">
+<!-- ================= POWER OF AYURVEDA ================= -->
+
+<section class="power-ayurveda">
 
     <div class="section-title">
 
         <h2>Power of Ayurveda</h2>
 
-        <p>Nature's finest ingredients for complete wellness.</p>
-
-    </div>
-
-    <div class="ingredient-grid">
-
-        <div class="ingredient-card">
-            <h3>🌿 Neem</h3>
-            <p>Purifies skin and helps fight acne naturally.</p>
-        </div>
-
-        <div class="ingredient-card">
-            <h3>🍃 Tulsi</h3>
-            <p>Boosts immunity and protects against infections.</p>
-        </div>
-
-        <div class="ingredient-card">
-            <h3>🟡 Turmeric</h3>
-            <p>Known for glowing skin and anti-inflammatory benefits.</p>
-        </div>
-
-        <div class="ingredient-card">
-            <h3>🥥 Aloe Vera</h3>
-            <p>Deep hydration for healthy skin and hair.</p>
-        </div>
-
-        <div class="ingredient-card">
-            <h3>🌱 Ashwagandha</h3>
-            <p>Supports stress relief and overall wellness.</p>
-        </div>
-
-        <div class="ingredient-card">
-            <h3>🍯 Amla</h3>
-            <p>Rich in Vitamin C for stronger hair and immunity.</p>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- ================= NEWSLETTER ================= -->
-
-<section class="newsletter">
-
-    <div class="newsletter-content">
-
-        <h2>Join the VedaRoots Family 🌿</h2>
-
         <p>
-
-            Subscribe to receive exclusive offers, wellness tips, and the latest Ayurvedic updates.
-
+            Nature's finest ingredients carefully selected for complete wellness.
         </p>
 
-        <form>
+    </div>
 
-            <input
-                type="email"
-                placeholder="Enter your email address"
-            >
+    <div class="ingredients-grid">
 
-            <button>
+        <div class="ingredient-card">
+            <div class="ingredient-icon">🌿</div>
+            <h3>Neem</h3>
+            <p>Purifies skin naturally and protects against acne & bacteria.</p>
+        </div>
 
-                Subscribe
+        <div class="ingredient-card">
+            <div class="ingredient-icon">🍃</div>
+            <h3>Tulsi</h3>
+            <p>Strengthens immunity and supports respiratory health.</p>
+        </div>
 
-            </button>
+        <div class="ingredient-card">
+            <div class="ingredient-icon">🟡</div>
+            <h3>Turmeric</h3>
+            <p>Powerful antioxidant with anti-inflammatory properties.</p>
+        </div>
 
-        </form>
+        <div class="ingredient-card">
+            <div class="ingredient-icon">🥥</div>
+            <h3>Aloe Vera</h3>
+            <p>Deep hydration for glowing skin and healthier hair.</p>
+        </div>
+
+        <div class="ingredient-card">
+            <div class="ingredient-icon">🌱</div>
+            <h3>Ashwagandha</h3>
+            <p>Helps reduce stress and boosts overall wellness.</p>
+        </div>
+
+        <div class="ingredient-card">
+            <div class="ingredient-icon">🫚</div>
+            <h3>Amla</h3>
+            <p>Rich in Vitamin C for stronger immunity and healthy hair.</p>
+        </div>
 
     </div>
 
@@ -499,30 +489,102 @@
 
 
 <!-- ================= FAQ ================= -->
+<!--==========================
+        FAQ SECTION
+===========================-->
 
-<section class="faq">
+<section class="faq-section">
 
     <div class="section-title">
 
         <h2>Frequently Asked Questions</h2>
 
+        <p>
+            Everything you need to know about VedaRoots products.
+        </p>
+
     </div>
 
     <div class="faq-container">
 
-        <div class="faq-item">
-            <h3>Are your products 100% Ayurvedic?</h3>
-            <p>Yes, all products are made using authentic Ayurvedic ingredients.</p>
+        <div class="faq">
+
+            <button class="faq-question">
+
+                Are your products 100% Ayurvedic?
+
+                <span>+</span>
+
+            </button>
+
+            <div class="faq-answer">
+
+                <p>
+                    Yes. Every VedaRoots product is prepared using authentic Ayurvedic herbs with premium quality ingredients.
+                </p>
+
+            </div>
+
         </div>
 
-        <div class="faq-item">
-            <h3>Do you deliver across India?</h3>
-            <p>Yes, we offer fast and secure delivery across India.</p>
+        <div class="faq">
+
+            <button class="faq-question">
+
+                How long does delivery take?
+
+                <span>+</span>
+
+            </button>
+
+            <div class="faq-answer">
+
+                <p>
+                    Orders are usually delivered within 3-7 business days across India.
+                </p>
+
+            </div>
+
         </div>
 
-        <div class="faq-item">
-            <h3>Are products suitable for all skin types?</h3>
-            <p>Most products are suitable for all skin types. Product descriptions mention any specific recommendations.</p>
+        <div class="faq">
+
+            <button class="faq-question">
+
+                Are there any side effects?
+
+                <span>+</span>
+
+            </button>
+
+            <div class="faq-answer">
+
+                <p>
+                    Our products are made using natural ingredients. However, if you have allergies, consult your doctor before use.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="faq">
+
+            <button class="faq-question">
+
+                Can I return my order?
+
+                <span>+</span>
+
+            </button>
+
+            <div class="faq-answer">
+
+                <p>
+                    Yes. We provide an easy return and replacement policy for eligible products.
+                </p>
+
+            </div>
+
         </div>
 
     </div>

@@ -5,6 +5,8 @@
 
 <section class="shop-page">
 
+    <!-- ================= SHOP HEADER ================= -->
+
     <div class="shop-header">
 
         <h1>🌿 Our Ayurvedic Store</h1>
@@ -17,7 +19,7 @@
 
     <div class="shop-container">
 
-        <!-- Sidebar -->
+        <!-- ================= SIDEBAR ================= -->
 
         <aside class="shop-sidebar">
 
@@ -26,13 +28,9 @@
             <ul>
 
                 <li>
-
                     <a href="{% url 'shop' %}">
-
                         🌿 All Products
-
                     </a>
-
                 </li>
 
                 {% for category in categories %}
@@ -53,29 +51,29 @@
 
         </aside>
 
-        <!-- Right Content -->
+        <!-- ================= SHOP CONTENT ================= -->
 
         <div class="shop-content">
+
+            <!-- Search -->
 
             <div class="shop-topbar">
 
                 <form method="GET">
 
                     {% if request.GET.category %}
-
                     <input
                         type="hidden"
                         name="category"
                         value="{{ request.GET.category }}"
                     >
-
                     {% endif %}
 
                     <input
                         type="text"
                         name="search"
                         value="{{ request.GET.search }}"
-                        placeholder="🔍 Search Products..."
+                        placeholder="🔍 Search Products"
                     >
 
                     <select name="sort">
@@ -90,7 +88,7 @@
 
                     </select>
 
-                    <button>
+                    <button type="submit">
 
                         Search
 
@@ -99,6 +97,8 @@
                 </form>
 
             </div>
+
+            <!-- Products -->
 
             <div class="shop-products">
 
@@ -120,14 +120,26 @@
 
                         </span>
 
-                        {% if product.image %}
+                        <!-- {% if product.image %}
 
-                        <img src="{{ product.image.url }}">
+                        <img
+                            src="{% static product.image %}"
+                            alt="{{ product.name }}"
+                        >
 
                         {% else %}
 
-                        <img src="{% static 'images/Login/login.png' %}">
+                        <img
+                            src="{% static 'images/products/default.png' %}"
+                            alt="No Image"
+                        >
 
+                        {% endif %} -->
+
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                        {% else %}
+                            <img src="{% static 'images/products/product1.png' %}" alt="No Image">
                         {% endif %}
 
                     </div>
@@ -160,15 +172,14 @@
 
                         </p>
 
-                      
+                        <a
+                            href="{% url 'add_to_cart' product.id %}"
+                            class="add-cart-btn"
+                        >
 
-                       <a href="{% url 'add_to_cart' product.id %}" class="add-cart-btn">
+                            🛒 Add To Cart
 
-    🛒 Add To Cart
-
-</a>
-
-                        </button>
+                        </a>
 
                     </div>
 
@@ -176,11 +187,11 @@
 
                 {% empty %}
 
-                <h2>
+                <div class="no-products">
 
-                    No Products Found
+                    <h2>No Products Found</h2>
 
-                </h2>
+                </div>
 
                 {% endfor %}
 

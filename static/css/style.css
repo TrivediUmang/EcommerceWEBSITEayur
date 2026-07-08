@@ -4198,3 +4198,847 @@ width:100%;
 }
 
 }
+
+/* ================= FEATURED PRODUCTS ================= */
+
+.featured-products{
+    padding:80px 8%;
+    background:#f8f8f5;
+}
+
+.product-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:35px;
+    margin-top:50px;
+}
+
+.product-card{
+    background:#fff;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.product-card:hover{
+    transform:translateY(-8px);
+}
+
+.product-image{
+    position:relative;
+    overflow:hidden;
+}
+
+.product-image img{
+    width:100%;
+    height:280px;      /* pehle bahut badi thi */
+    object-fit:cover;  /* image crop hoke fit hogi */
+    display:block;
+}
+
+.product-info{
+    padding:25px;
+    text-align:center;
+}
+
+.product-info h3{
+    font-size:30px;
+    margin-bottom:15px;
+}
+
+.price{
+    font-size:32px;
+    font-weight:700;
+    color:#2e7d32;
+}
+
+.product-image {
+    width: 100%;
+    height: 260px;
+    overflow: hidden;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;   /* image poori dikhegi */
+    display: block;
+}
+
+
+/* =========================================
+        WHY CHOOSE VEDAROOTS
+=========================================*/
+
+.why-choose{
+
+    padding:120px 8%;
+
+    background:linear-gradient(135deg,#f9fff7,#eef9f0);
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.why-choose::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+
+    height:500px;
+
+    background:#7bc96f30;
+
+    border-radius:50%;
+
+    top:-180px;
+
+    right:-150px;
+
+    filter:blur(70px);
+
+}
+
+.why-choose::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:350px;
+
+    height:350px;
+
+    background:#5da85b25;
+
+    border-radius:50%;
+
+    bottom:-150px;
+
+    left:-120px;
+
+    filter:blur(60px);
+
+}
+
+/* Heading */
+
+.why-title{
+
+    text-align:center;
+
+    margin-bottom:70px;
+
+    position:relative;
+
+    z-index:10;
+
+}
+
+.why-title h2{
+
+    font-size:64px;
+
+    font-weight:800;
+
+    color:#1b5e20;
+
+    margin-bottom:20px;
+
+}
+
+.why-title p{
+
+    font-size:22px;
+
+    color:#666;
+
+    max-width:800px;
+
+    margin:auto;
+
+    line-height:38px;
+
+}
+
+/* Cards */
+
+.why-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:35px;
+
+    position:relative;
+
+    z-index:10;
+
+}
+
+/* Card */
+
+.why-card{
+
+    background:rgba(255,255,255,.75);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.5);
+
+    border-radius:28px;
+
+    padding:45px 30px;
+
+    text-align:center;
+
+    transition:.45s;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.08);
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.why-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:100%;
+
+    height:5px;
+
+    background:linear-gradient(90deg,#2e7d32,#66bb6a);
+
+    left:0;
+
+    top:0;
+
+}
+
+.why-card:hover{
+
+    transform:translateY(-15px);
+
+    box-shadow:0 30px 70px rgba(46,125,50,.20);
+
+}
+
+/* Icon */
+
+.why-icon{
+
+    width:90px;
+
+    height:90px;
+
+    background:linear-gradient(135deg,#2e7d32,#43a047);
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    margin:auto;
+
+    font-size:42px;
+
+    color:white;
+
+    margin-bottom:30px;
+
+    transition:.4s;
+
+    box-shadow:0 10px 25px rgba(46,125,50,.35);
+
+}
+
+.why-card:hover .why-icon{
+
+    transform:rotate(10deg) scale(1.12);
+
+}
+
+/* Title */
+
+.why-card h3{
+
+    font-size:30px;
+
+    color:#1b5e20;
+
+    margin-bottom:18px;
+
+}
+
+/* Text */
+
+.why-card p{
+
+    color:#666;
+
+    line-height:34px;
+
+    font-size:18px;
+
+}
+
+/* Hover Border */
+
+.why-card:hover{
+
+    border-color:#66bb6a;
+
+}
+
+/*=========================================
+        TRUSTED BY THOUSANDS
+=========================================*/
+
+.trusted-section{
+
+    padding:120px 8%;
+
+    background:linear-gradient(135deg,#ffffff,#f3fbf2);
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+/* Background Glow */
+
+.trusted-section::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:450px;
+
+    height:450px;
+
+    background:#8BC34A25;
+
+    border-radius:50%;
+
+    top:-180px;
+
+    left:-150px;
+
+    filter:blur(70px);
+
+}
+
+.trusted-section::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:380px;
+
+    height:380px;
+
+    background:#4CAF5025;
+
+    border-radius:50%;
+
+    bottom:-150px;
+
+    right:-120px;
+
+    filter:blur(70px);
+
+}
+
+/* Heading */
+
+.trusted-title{
+
+    text-align:center;
+
+    margin-bottom:70px;
+
+    position:relative;
+
+    z-index:5;
+
+}
+
+.trusted-title h2{
+
+    font-size:62px;
+
+    color:#1b5e20;
+
+    margin-bottom:20px;
+
+    font-weight:800;
+
+}
+
+.trusted-title p{
+
+    font-size:22px;
+
+    color:#666;
+
+    max-width:800px;
+
+    margin:auto;
+
+    line-height:38px;
+
+}
+
+/* Grid */
+
+.trusted-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+    gap:35px;
+
+    position:relative;
+
+    z-index:5;
+
+}
+
+/* Card */
+
+.trusted-card{
+
+    background:rgba(255,255,255,.75);
+
+    backdrop-filter:blur(20px);
+
+    border-radius:30px;
+
+    padding:45px 20px;
+
+    text-align:center;
+
+    transition:.4s;
+
+    box-shadow:0 20px 50px rgba(0,0,0,.08);
+
+    border:1px solid rgba(255,255,255,.6);
+
+}
+
+.trusted-card:hover{
+
+    transform:translateY(-15px);
+
+    box-shadow:0 30px 60px rgba(46,125,50,.18);
+
+}
+
+/* Number */
+
+.trusted-card h3{
+
+    font-size:64px;
+
+    color:#2E7D32;
+
+    margin-bottom:15px;
+
+    font-weight:800;
+
+}
+
+/* Text */
+
+.trusted-card p{
+
+    font-size:21px;
+
+    color:#555;
+
+    font-weight:500;
+
+}
+
+/*==========================================
+        POWER OF AYURVEDA
+==========================================*/
+
+.power-ayurveda{
+
+    padding:120px 8%;
+
+    background:linear-gradient(135deg,#ffffff,#f3fbf3);
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+/* Background Glow */
+
+.power-ayurveda::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:450px;
+
+    height:450px;
+
+    background:#4CAF5020;
+
+    border-radius:50%;
+
+    top:-180px;
+
+    right:-120px;
+
+    filter:blur(70px);
+
+}
+
+.power-ayurveda::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:400px;
+
+    height:400px;
+
+    background:#8BC34A20;
+
+    border-radius:50%;
+
+    bottom:-180px;
+
+    left:-120px;
+
+    filter:blur(70px);
+
+}
+
+/* Heading */
+
+.power-ayurveda .section-title{
+
+    text-align:center;
+
+    margin-bottom:70px;
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+.power-ayurveda .section-title h2{
+
+    font-size:60px;
+
+    color:#1B5E20;
+
+    font-weight:800;
+
+    margin-bottom:20px;
+
+}
+
+.power-ayurveda .section-title p{
+
+    font-size:22px;
+
+    color:#666;
+
+    max-width:760px;
+
+    margin:auto;
+
+    line-height:38px;
+
+}
+
+/* Grid */
+
+.ingredients-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+    gap:35px;
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+/* Cards */
+
+.ingredient-card{
+
+    background:rgba(255,255,255,.75);
+
+    backdrop-filter:blur(20px);
+
+    border-radius:28px;
+
+    padding:45px 30px;
+
+    text-align:center;
+
+    transition:.45s;
+
+    border:1px solid rgba(255,255,255,.6);
+
+    box-shadow:0 18px 45px rgba(0,0,0,.08);
+
+}
+
+.ingredient-card:hover{
+
+    transform:translateY(-15px) scale(1.03);
+
+    box-shadow:0 25px 60px rgba(46,125,50,.18);
+
+}
+
+/* Icon */
+
+.ingredient-icon{
+
+    width:90px;
+
+    height:90px;
+
+    margin:auto;
+
+    border-radius:50%;
+
+    background:linear-gradient(135deg,#43A047,#81C784);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:42px;
+
+    margin-bottom:25px;
+
+    color:white;
+
+    transition:.4s;
+
+}
+
+.ingredient-card:hover .ingredient-icon{
+
+    transform:rotate(15deg) scale(1.15);
+
+}
+
+/* Heading */
+
+.ingredient-card h3{
+
+    font-size:30px;
+
+    color:#2E7D32;
+
+    margin-bottom:15px;
+
+    font-weight:700;
+
+}
+
+/* Description */
+
+.ingredient-card p{
+
+    font-size:18px;
+
+    color:#666;
+
+    line-height:32px;
+
+}
+
+/*=========================================
+            FAQ SECTION
+=========================================*/
+
+.faq-section{
+
+    padding:100px 8%;
+    background:linear-gradient(135deg,#fbfffb,#eef8ed);
+
+}
+
+.faq-section .section-title{
+
+    text-align:center;
+    margin-bottom:50px;
+
+}
+
+.faq-section .section-title h2{
+
+    font-size:56px;
+    color:#2E7D32;
+    font-weight:800;
+    margin-bottom:15px;
+
+}
+
+.faq-section .section-title p{
+
+    font-size:20px;
+    color:#666;
+
+}
+
+/* Container */
+
+.faq-container{
+
+    max-width:900px;
+    margin:auto;
+
+}
+
+/* Card */
+
+.faq{
+
+    background:#fff;
+    border-radius:18px;
+    margin-bottom:18px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    transition:.35s;
+
+}
+
+.faq:hover{
+
+    transform:translateY(-4px);
+    box-shadow:0 18px 40px rgba(46,125,50,.15);
+
+}
+
+/* Question */
+
+.faq-question{
+
+    width:100%;
+    border:none;
+    background:#fff;
+    cursor:pointer;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:22px 28px;
+
+    font-size:21px;
+    font-weight:700;
+    color:#2E7D32;
+
+}
+
+/* Plus */
+
+.faq-question span{
+
+    width:38px;
+    height:38px;
+
+    background:#2E7D32;
+
+    color:#fff;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:24px;
+
+    transition:.4s;
+
+}
+
+/* Answer */
+
+.faq-answer{
+
+    max-height:0;
+    overflow:hidden;
+
+    transition:max-height .4s ease;
+
+    background:#fafafa;
+
+}
+
+.faq-answer p{
+
+    padding:0 28px 22px;
+
+    margin:0;
+
+    font-size:17px;
+
+    line-height:28px;
+
+    color:#666;
+
+}
+
+/* Active */
+
+.faq.active .faq-answer{
+
+    max-height:180px;
+
+}
+
+.faq.active .faq-question span{
+
+    transform:rotate(45deg);
+    background:#1B5E20;
+
+}
