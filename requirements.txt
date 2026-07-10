@@ -7,3 +7,4 @@ Pillow
 requests
 sqlparse
 asgiref
+django-allauth==
