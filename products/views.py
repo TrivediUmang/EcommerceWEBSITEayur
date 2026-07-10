@@ -1,45 +1,39 @@
-from django.shortcuts import render
-from .models import Product, Category , Blog, Contact
-from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.shortcuts import redirect
 
-# def home(request):
+from .models import Product, Category, Blog, Contact
 
-#     # Sirf 4 Featured Products
-#     products = Product.objects.all()[:3]
 
-#     categories = Category.objects.all()
+# ===========================
+# HOME
+# ===========================
 
-#     context = {
-#         "products": products,
-#         "categories": categories
-#     }
-#     print("*******************")
-#     return render(request, "home.html", context)
 def home(request):
-    print("View Called")
+
     return render(request, "home.html")
+
+
+# ===========================
+# SHOP
+# ===========================
 
 def shop(request):
 
     products = Product.objects.all()
     categories = Category.objects.all()
 
-    # Category Filter
     category_slug = request.GET.get("category")
 
     if category_slug:
         products = products.filter(category__slug=category_slug)
 
-    # Search
     search = request.GET.get("search")
 
     if search:
         products = products.filter(name__icontains=search)
 
-    # Sorting
     sort = request.GET.get("sort")
 
     if sort == "low":
@@ -53,109 +47,192 @@ def shop(request):
 
     context = {
         "products": products,
-        "categories": categories
+        "categories": categories,
     }
 
     return render(request, "shop.html", context)
 
+
+# ===========================
+# ABOUT
+# ===========================
+
 def about(request):
+
     return render(request, "about.html")
 
-from .models import Product, Category, Blog
-def blogs(request):
 
-    blogs = Blog.objects.all()
-
-    return render(request, "blogs.html", {
-        "blogs": blogs
-    })
+# ===========================
+# BLOGS
+# ===========================
 
 def blogs(request):
 
     blogs = Blog.objects.all()
 
-    context = {
-        "blogs": blogs
-    }
+    return render(
+        request,
+        "blogs.html",
+        {
+            "blogs": blogs
+        }
+    )
 
-    return render(request, "blogs.html", context)
+
+# ===========================
+# CONTACT
+# ===========================
 
 def contact(request):
 
     if request.method == "POST":
 
         Contact.objects.create(
+
             name=request.POST.get("name"),
+
             email=request.POST.get("email"),
+
             phone=request.POST.get("phone"),
+
             subject=request.POST.get("subject"),
-            message=request.POST.get("message")
+
+            message=request.POST.get("message"),
+
         )
+
+        messages.success(request, "Message Sent Successfully.")
 
     return render(request, "contact.html")
 
 
+# ===========================
+# LOGIN
+# ===========================
+
 def user_login(request):
+
+    if request.user.is_authenticated:
+
+        return redirect("home")
 
     if request.method == "POST":
 
         username = request.POST.get("username")
+
         password = request.POST.get("password")
 
         user = authenticate(
+
             request,
+
             username=username,
-            password=password
+
+            password=password,
+
         )
 
         if user is not None:
+
             login(request, user)
+
             return redirect("home")
+
         else:
-            messages.error(request, "Invalid Username or Password")
+
+            messages.error(
+
+                request,
+
+                "Invalid Username or Password"
+
+            )
 
     return render(request, "login.html")
 
+
+# ===========================
+# REGISTER
+# ===========================
+
 def register(request):
+
+    if request.user.is_authenticated:
+
+        return redirect("home")
 
     if request.method == "POST":
 
         first_name = request.POST.get("first_name")
+
         last_name = request.POST.get("last_name")
+
         username = request.POST.get("username")
+
         email = request.POST.get("email")
+
         password = request.POST.get("password")
+
         confirm_password = request.POST.get("confirm_password")
 
-        # Password Match Check
         if password != confirm_password:
-            messages.error(request, "Passwords do not match.")
+
+            messages.error(
+                request,
+                "Passwords do not match."
+            )
+
             return redirect("register")
 
-        # Username Exists
         if User.objects.filter(username=username).exists():
-            messages.error(request, "Username already exists.")
+
+            messages.error(
+                request,
+                "Username already exists."
+            )
+
             return redirect("register")
 
-        # Email Exists
         if User.objects.filter(email=email).exists():
-            messages.error(request, "Email already exists.")
+
+            messages.error(
+                request,
+                "Email already exists."
+            )
+
             return redirect("register")
 
-        # Create User
         User.objects.create_user(
+
             username=username,
+
             first_name=first_name,
+
             last_name=last_name,
+
             email=email,
-            password=password
+
+            password=password,
+
         )
 
-        messages.success(request, "Registration successful! Please login.")
+        messages.success(
+
+            request,
+
+            "Registration Successful."
+
+        )
+
         return redirect("login")
 
     return render(request, "register.html")
 
+
+# ===========================
+# CART
+# ===========================
+
 def add_to_cart(request, product_id):
+
     return redirect("shop")
-    
