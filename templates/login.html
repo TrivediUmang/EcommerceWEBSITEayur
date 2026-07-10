@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load socialaccount %}
 
 {% block content %}
 
@@ -8,15 +9,13 @@
     <div class="login-container">
 
         <!-- Left Side -->
-
         <div class="login-image">
 
-            <img src="{% static 'images/Login/login.png' %}" alt="Login">
+            <img src="{% static 'images/Login/login.png' %}" alt="Login Image">
 
         </div>
 
         <!-- Right Side -->
-
         <div class="login-form">
 
             <h2>Welcome Back 🌿</h2>
@@ -49,7 +48,7 @@
                     required
                 >
 
-                <button type="submit">
+                <button type="submit" class="login-btn">
 
                     Login
 
@@ -58,25 +57,47 @@
             </form>
 
             <p class="register-text">
-        Don't have an account?
-    <a href="{% url 'register' %}">Register Here</a>
-</p>
+
+                Don't have an account?
+
+                <a href="{% url 'register' %}">
+
+                    Register Here
+
+                </a>
+
+            </p>
+
+            <!-- OR Divider -->
+
+            <div class="or-divider">
+
+                <span>OR</span>
+
+            </div>
+
+            <!-- Google Login -->
+
+            <div class="google-login">
+
+                <a href="{% provider_login_url 'google' %}" class="google-btn">
+
+                    <img
+                        src="https://developers.google.com/identity/images/g-logo.png"
+                        alt="Google"
+                        width="22"
+                    >
+
+                    <span>Continue with Google</span>
+
+                </a>
+
+            </div>
 
         </div>
 
     </div>
 
 </section>
-
-{% load socialaccount %}
-
-<div class="google-login">
-    <a href="{% provider_login_url 'google' %}" class="google-btn">
-        <img src="https://developers.google.com/identity/images/g-logo.png"
-             width="20"
-             style="vertical-align:middle; margin-right:10px;">
-        Continue with Google
-    </a>
-</div>
 
 {% endblock %}
