@@ -30,7 +30,10 @@ urlpatterns = [
 
     # Cart App
     path('cart/', include('cart.urls')),
+  
+     path("account/", include("accounts.urls")),
 ]
+
 # Mendatory
 urlpatterns += static(settings.MEDIA_URL, 
     document_root=settings.MEDIA_ROOT)
