@@ -6210,3 +6210,42 @@ width:100%;
     transform:translateY(-3px);
 
 }
+.cart-features{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+    margin-top:70px;
+}
+
+.feature-card{
+
+    background:#fff;
+    border-radius:20px;
+    padding:30px;
+    text-align:center;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+.feature-icon{
+
+    font-size:45px;
+    margin-bottom:18px;
+
+}
+
+.feature-card h3{
+
+    font-size:24px;
+    margin-bottom:12px;
+    color:#1b5e20;
+
+}
+
+.feature-card p{
+
+    color:#666;
+    line-height:1.6;
+
+}
