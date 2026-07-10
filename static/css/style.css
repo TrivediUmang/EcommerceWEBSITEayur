@@ -6249,3 +6249,39 @@ width:100%;
     line-height:1.6;
 
 }
+
+.nav-icons{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.account-btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:12px 22px;
+
+    background:#EDF8EF;
+
+    color:#2E7D32;
+
+    text-decoration:none;
+
+    border-radius:50px;
+
+    font-weight:600;
+
+    transition:.3s;
+}
+
+.account-btn:hover{
+
+    background:#2E7D32;
+
+    color:white;
+
+    transform:translateY(-2px);
+
+}

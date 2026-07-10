@@ -9,8 +9,10 @@
 
     <title>VedaRoots</title>
 
+    <!-- Main CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
+    <!-- Swiper CSS -->
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
@@ -42,47 +44,22 @@
 
             {% if user.is_authenticated %}
 
-            <div class="profile-dropdown">
-
-                <button class="profile-btn">
+                <a href="{% url 'profile' %}" class="account-btn">
                     👤 {{ user.username }}
-                    <span class="arrow">▼</span>
-                </button>
+                </a>
 
-                <div class="dropdown-content">
-
-                    <a href="{% url 'profile' %}">
-                        🏠 Dashboard
-                    </a>
-
-                    <a href="#">
-                        📦 My Orders
-                    </a>
-
-                    <a href="#">
-                        ❤️ Wishlist
-                    </a>
-
-                    <a href="#">
-                        ⚙️ Settings
-                    </a>
-
-                    <form action="{% url 'account_logout' %}" method="POST">
-                        {% csrf_token %}
-                        <button type="submit">
-                            🚪 Logout
-                        </button>
-                    </form>
-
-                </div>
-
-            </div>
+                <form action="{% url 'account_logout' %}" method="POST" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="login-btn">
+                        Logout
+                    </button>
+                </form>
 
             {% else %}
 
-            <a href="{% url 'login' %}" class="login-btn">
-                Login
-            </a>
+                <a href="{% url 'login' %}" class="login-btn">
+                    Login
+                </a>
 
             {% endif %}
 
@@ -100,8 +77,8 @@
 
 <main>
 
-{% block content %}
-{% endblock %}
+    {% block content %}
+    {% endblock %}
 
 </main>
 
@@ -119,7 +96,7 @@
 
 <script>
 
-const swiper = new Swiper(".categorySwiper", {
+const swiper = document.querySelector(".categorySwiper") ? new Swiper(".categorySwiper", {
 
     slidesPerView: 4,
     spaceBetween: 30,
@@ -144,61 +121,46 @@ const swiper = new Swiper(".categorySwiper", {
 
     breakpoints: {
 
-        0: {
-            slidesPerView: 1
-        },
+        0: { slidesPerView: 1 },
 
-        576: {
-            slidesPerView: 2
-        },
+        576: { slidesPerView: 2 },
 
-        768: {
-            slidesPerView: 3
-        },
+        768: { slidesPerView: 3 },
 
-        1024: {
-            slidesPerView: 4
-        }
+        1024: { slidesPerView: 4 }
 
     }
 
-});
+}) : null;
 
 </script>
 
-<!-- Counter Animation -->
-
 <script>
 
-const counters = document.querySelectorAll(".counter");
+document.querySelectorAll(".counter").forEach(counter => {
 
-const speed = 100;
+    const update = () => {
 
-counters.forEach(counter => {
+        const target = +counter.dataset.target;
+        const current = +counter.innerText;
 
-    const updateCount = () => {
+        const inc = target / 100;
 
-        const target = +counter.getAttribute("data-target");
+        if(current < target){
 
-        const count = +counter.innerText;
+            counter.innerText = Math.ceil(current + inc);
 
-        const increment = target / speed;
+            setTimeout(update,20);
 
-        if (count < target) {
-
-            counter.innerText = Math.ceil(count + increment);
-
-            setTimeout(updateCount, 20);
-
-        } else {
+        }else{
 
             counter.innerText = target;
 
         }
 
-    };
+    }
 
-    updateCount();
+    update();
 
 });
 
