@@ -7,4 +7,4 @@ Pillow
 requests
 sqlparse
 asgiref
-django-allauth==
+django-allauth==65.18.0
