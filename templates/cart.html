@@ -9,7 +9,9 @@
 
         <h1>🛒 My Shopping Cart</h1>
 
-        <p>Review your selected Ayurvedic products before checkout.</p>
+        <p>
+            Review your selected Ayurvedic products before checkout.
+        </p>
 
     </div>
 
@@ -25,25 +27,35 @@
 
             <div class="cart-card">
 
+                <!-- Product Image -->
+
                 <div class="cart-image">
 
                     {% if item.product.image %}
 
-                        <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                        <img
+                            src="{{ item.product.image.url }}"
+                            alt="{{ item.product.name }}"
+                        >
 
                     {% else %}
 
-                        <img src="{% static 'images/products/product1.png' %}" alt="Product">
+                        <img
+                            src="{% static 'images/products/product1.png' %}"
+                            alt="Product"
+                        >
 
                     {% endif %}
 
                 </div>
 
+                <!-- Product Details -->
+
                 <div class="cart-info">
 
                     <span class="cart-category">
 
-                        🌿 Ayurvedic Product
+                        🌿 Premium Ayurvedic Product
 
                     </span>
 
@@ -63,38 +75,85 @@
 
                     <p class="cart-description">
 
-                        Premium Ayurvedic product made from natural herbs for better health and wellness.
+                        Made with 100% natural herbs for complete wellness,
+                        immunity and healthy lifestyle.
 
                     </p>
 
-                    <h3>
+                    <div class="price-section">
 
-                        ₹{{ item.product.price }}
+                        <span class="old-price">
 
-                    </h3>
+                            ₹{{ item.product.price|add:"200" }}
 
-                    <div class="quantity-box">
+                        </span>
 
-                 <a href="{% url 'decrease_quantity' item.id %}">
+                        <span class="current-price">
 
-                    <button>-</button>
-                     </a>
+                            ₹{{ item.product.price }}
 
-                     <span>{{ item.quantity }}</span>
+                        </span>
 
-                    <a href="{% url 'increase_quantity' item.id %}">
-                    <button>+</button>
-                    </a>
+                        <span class="discount-tag">
 
-                    
+                            20% OFF
+
+                        </span>
+
+                    </div>
+
+                    <!-- Quantity -->
+
+                    <div class="cart-actions">
+
+                        <div class="quantity-box">
+
+                            <a
+                                href="{% url 'decrease_quantity' item.id %}"
+                                class="qty-btn"
+                            >
+
+                                −
+
+                            </a>
+
+                            <span class="qty-number">
+
+                                {{ item.quantity }}
+
+                            </span>
+
+                            <a
+                                href="{% url 'increase_quantity' item.id %}"
+                                class="qty-btn"
+                            >
+
+                                +
+
+                            </a>
+
                         </div>
-             <a
-             href="{% url 'remove_from_cart' item.id %}"
-              class="remove-btn">
 
-                🗑 Remove
+                        <a
+                            href="{% url 'remove_from_cart' item.id %}"
+                            class="remove-btn"
+                        >
 
-                    </a>
+                            🗑 Remove
+
+                        </a>
+
+                    </div>
+
+                    <div class="delivery-info">
+
+                        🚚 Free Delivery
+
+                        <span>
+
+                            | Estimated Delivery : 2 - 4 Days
+
+                        </span>
 
                     </div>
 
@@ -124,7 +183,7 @@
 
                     <span>
 
-                        Products
+                        Total Products
 
                     </span>
 
@@ -140,7 +199,7 @@
 
                     <span>
 
-                        Subtotal
+                        Cart Value
 
                     </span>
 
@@ -184,13 +243,29 @@
 
                 </div>
 
+                <div class="summary-row">
+
+                    <span>
+
+                        GST
+
+                    </span>
+
+                    <span>
+
+                        Included
+
+                    </span>
+
+                </div>
+
                 <hr>
 
                 <div class="summary-total">
 
                     <span>
 
-                        Total
+                        Grand Total
 
                     </span>
 
@@ -210,7 +285,47 @@
 
                 <div class="secure-payment">
 
-                    🔒 Secure Payment
+                    🔒 100% Secure Payment
+
+                </div>
+
+                <div class="payment-icons">
+
+                    💳 Visa &nbsp;
+
+                    💳 MasterCard &nbsp;
+
+                    🟢 UPI &nbsp;
+
+                    🏦 Net Banking
+
+                </div>
+
+                                <div class="guarantee-box">
+
+                    <div class="guarantee-item">
+
+                        🌿 100% Natural Herbs
+
+                    </div>
+
+                    <div class="guarantee-item">
+
+                        🔄 Easy Return Policy
+
+                    </div>
+
+                    <div class="guarantee-item">
+
+                        🛡️ Secure Checkout
+
+                    </div>
+
+                    <div class="guarantee-item">
+
+                        📦 Fast Delivery
+
+                    </div>
 
                 </div>
 
@@ -226,7 +341,10 @@
 
     <div class="empty-cart">
 
-        <img src="{% static 'images/Cart/image22.jpg' %}" alt="Empty Cart">
+        <img
+            src="{% static 'images/Cart/image22.jpg' %}"
+            alt="Empty Cart"
+        >
 
         <h2>
 
@@ -240,7 +358,10 @@
 
         </p>
 
-        <a href="{% url 'shop' %}" class="continue-btn">
+        <a
+            href="{% url 'shop' %}"
+            class="continue-btn"
+        >
 
             🌿 Continue Shopping
 
@@ -249,6 +370,100 @@
     </div>
 
     {% endif %}
+
+    <!-- ================= FEATURES ================= -->
+
+    <section class="cart-features">
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+
+                🚚
+
+            </div>
+
+            <h3>
+
+                Free Shipping
+
+            </h3>
+
+            <p>
+
+                Free Delivery Across India
+
+            </p>
+
+        </div>
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+
+                💳
+
+            </div>
+
+            <h3>
+
+                Secure Payment
+
+            </h3>
+
+            <p>
+
+                100% Safe & Secure Checkout
+
+            </p>
+
+        </div>
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+
+                🌿
+
+            </div>
+
+            <h3>
+
+                Organic Products
+
+            </h3>
+
+            <p>
+
+                Certified Ayurvedic Ingredients
+
+            </p>
+
+        </div>
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+
+                ⭐
+
+            </div>
+
+            <h3>
+
+                Trusted Quality
+
+            </h3>
+
+            <p>
+
+                Loved By Thousands Of Customers
+
+            </p>
+
+        </div>
+
+    </section>
 
 </section>
 
