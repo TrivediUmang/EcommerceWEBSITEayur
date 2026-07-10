@@ -342,3 +342,86 @@ Responsive
     }
 
 }
+/* ===========================
+PROFILE DROPDOWN
+=========================== */
+
+.profile-dropdown{
+    position:relative;
+    display:inline-block;
+}
+
+.profile-btn{
+    background:#EDF8EF;
+    border:none;
+    padding:12px 18px;
+    border-radius:50px;
+    font-size:15px;
+    font-weight:600;
+    color:#2E7D32;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.profile-btn:hover{
+    background:#2E7D32;
+    color:#fff;
+}
+
+.arrow{
+    font-size:10px;
+    margin-left:6px;
+}
+
+.dropdown-content{
+    position:absolute;
+    top:58px;
+    right:0;
+    width:230px;
+    background:#fff;
+    border-radius:18px;
+    box-shadow:0 15px 40px rgba(0,0,0,.12);
+    overflow:hidden;
+    display:none;
+    z-index:999;
+}
+
+.profile-dropdown:hover .dropdown-content{
+    display:block;
+}
+
+.dropdown-content a{
+    display:block;
+    padding:15px 20px;
+    text-decoration:none;
+    color:#333;
+    transition:.3s;
+    font-weight:500;
+}
+
+.dropdown-content a:hover{
+    background:#EDF8EF;
+    color:#2E7D32;
+    padding-left:28px;
+}
+
+.dropdown-content form{
+    margin:0;
+}
+
+.dropdown-content button{
+    width:100%;
+    border:none;
+    background:white;
+    text-align:left;
+    padding:15px 20px;
+    cursor:pointer;
+    font-size:15px;
+    transition:.3s;
+}
+
+.dropdown-content button:hover{
+    background:#ffefef;
+    color:#d32f2f;
+    padding-left:28px;
+}
