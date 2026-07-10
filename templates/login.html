@@ -68,4 +68,15 @@
 
 </section>
 
+{% load socialaccount %}
+
+<div class="google-login">
+    <a href="{% provider_login_url 'google' %}" class="google-btn">
+        <img src="https://developers.google.com/identity/images/g-logo.png"
+             width="20"
+             style="vertical-align:middle; margin-right:10px;">
+        Continue with Google
+    </a>
+</div>
+
 {% endblock %}

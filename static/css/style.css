@@ -5042,3 +5042,26 @@ width:100%;
     background:#1B5E20;
 
 }
+.google-login{
+    margin-top:20px;
+}
+
+.google-btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    width:100%;
+    padding:14px;
+    border:1px solid #ddd;
+    border-radius:12px;
+    text-decoration:none;
+    color:#333;
+    background:#fff;
+    font-weight:600;
+    transition:.3s;
+}
+
+.google-btn:hover{
+    background:#f5f5f5;
+}
