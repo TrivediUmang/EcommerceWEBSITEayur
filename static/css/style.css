@@ -5204,3 +5204,23 @@ width:100%;
     border-radius:10px;
     margin-bottom:15px;
 }
+
+.nav-icons{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.nav-icons form{
+    margin:0;
+}
+
+.nav-icons button.login-btn{
+    border:none;
+    cursor:pointer;
+    font-family:inherit;
+}
+
+.nav-icons span{
+    font-size:16px;
+}

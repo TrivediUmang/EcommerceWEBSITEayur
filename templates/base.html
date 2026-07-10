@@ -20,171 +20,177 @@
 
 <body>
 
-    <!-- ================= NAVBAR ================= -->
+<!-- ================= NAVBAR ================= -->
 
-    <header>
+<header>
 
-        <nav class="navbar">
+    <nav class="navbar">
 
-            <div class="logo">
-                🌿 <span>VedaRoots</span>
-            </div>
+        <div class="logo">
+            🌿 <span>VedaRoots</span>
+        </div>
 
-            <ul class="nav-links">
+        <ul class="nav-links">
 
-                <li><a href="/">Home</a></li>
+            <li><a href="/">Home</a></li>
 
-                <li><a href="{% url 'shop' %}">Shop</a></li>
+            <li><a href="{% url 'shop' %}">Shop</a></li>
 
-                <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
 
-                <li><a href="{% url 'blogs' %}">Blogs</a></li>
+            <li><a href="{% url 'blogs' %}">Blogs</a></li>
 
-                <li><a href="{% url 'contact' %}">Contact</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
 
-            </ul>
+        </ul>
 
-            <div class="nav-icons">
+        <div class="nav-icons">
 
-                {% if user.is_authenticated %}
+            {% if user.is_authenticated %}
 
-                    <span class="welcome-user">
-                        👋 {{ user.first_name|default:user.username }}
-                    </span>
+                <span style="margin-right:15px;font-weight:600;color:#2E7D32;">
+                    👋 {{ user.username }}
+                </span>
 
-                    <a href="{% url 'logout' %}" class="login-btn">
+                <form action="{% url 'account_logout' %}" method="POST" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="login-btn">
                         Logout
-                    </a>
+                    </button>
+                </form>
 
-                {% else %}
+            {% else %}
 
-                    <a href="{% url 'login' %}" class="login-btn">
-                        Login
-                    </a>
-
-                {% endif %}
-
-                <a href="{% url 'cart' %}" class="cart-btn">
-                    🛒 Cart
+                <a href="{% url 'login' %}" class="login-btn">
+                    Login
                 </a>
 
-            </div>
+            {% endif %}
 
-        </nav>
+            <a href="{% url 'cart' %}" class="cart-btn">
+                🛒 Cart
+            </a>
 
-    </header>
+        </div>
 
-    <!-- ================= MAIN ================= -->
+    </nav>
 
-    <main>
+</header>
 
-        {% block content %}
-        {% endblock %}
+<!-- ================= MAIN ================= -->
 
-    </main>
+<main>
 
-    <!-- ================= FOOTER ================= -->
+    {% block content %}
+    {% endblock %}
 
-    <footer>
+</main>
 
-        <p>© 2026 VedaRoots. All Rights Reserved.</p>
+<!-- ================= FOOTER ================= -->
 
-    </footer>
+<footer>
 
-    <!-- ================= SWIPER ================= -->
+    <p>© 2026 VedaRoots. All Rights Reserved.</p>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+</footer>
 
-    <script>
+<!-- ================= SWIPER ================= -->
 
-        const swiper = new Swiper(".categorySwiper", {
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-            slidesPerView: 4,
-            spaceBetween: 30,
-            loop: true,
-            speed: 1200,
-            grabCursor: true,
+<script>
 
-            autoplay: {
-                delay: 4000,
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true,
-            },
+const swiper = new Swiper(".categorySwiper",{
 
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
+    slidesPerView:4,
 
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
+    spaceBetween:30,
 
-            breakpoints: {
+    loop:true,
 
-                0: {
-                    slidesPerView: 1
-                },
+    speed:1200,
 
-                576: {
-                    slidesPerView: 2
-                },
+    autoplay:{
+        delay:4000,
+        disableOnInteraction:false,
+        pauseOnMouseEnter:true,
+    },
 
-                768: {
-                    slidesPerView: 3
-                },
+    navigation:{
+        nextEl:".swiper-button-next",
+        prevEl:".swiper-button-prev",
+    },
 
-                1024: {
-                    slidesPerView: 4
-                }
+    pagination:{
+        el:".swiper-pagination",
+        clickable:true,
+    },
 
-            }
+    breakpoints:{
 
-        });
+        0:{
+            slidesPerView:1
+        },
 
-    </script>
+        576:{
+            slidesPerView:2
+        },
 
-    <!-- Counter -->
+        768:{
+            slidesPerView:3
+        },
 
-    <script>
+        1024:{
+            slidesPerView:4
+        }
 
-        const counters = document.querySelectorAll(".counter");
+    }
 
-        const speed = 100;
+});
 
-        counters.forEach(counter => {
+</script>
 
-            const updateCount = () => {
+<!-- Counter Animation -->
 
-                const target = +counter.getAttribute("data-target");
+<script>
 
-                const count = +counter.innerText;
+const counters=document.querySelectorAll(".counter");
 
-                const increment = target / speed;
+const speed=100;
 
-                if (count < target) {
+counters.forEach(counter=>{
 
-                    counter.innerText = Math.ceil(count + increment);
+    const updateCount=()=>{
 
-                    setTimeout(updateCount, 20);
+        const target=+counter.getAttribute("data-target");
 
-                } else {
+        const count=+counter.innerText;
 
-                    counter.innerText = target;
+        const increment=target/speed;
 
-                }
+        if(count<target){
 
-            }
+            counter.innerText=Math.ceil(count+increment);
 
-            updateCount();
+            setTimeout(updateCount,20);
 
-        });
+        }
 
-    </script>
+        else{
 
-    <script src="{% static 'js/main.js' %}"></script>
+            counter.innerText=target;
+
+        }
+
+    }
+
+    updateCount();
+
+});
+
+</script>
+
+<script src="{% static 'js/main.js' %}"></script>
 
 </body>
-
 </html>
