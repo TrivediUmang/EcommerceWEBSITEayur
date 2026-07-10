@@ -5254,7 +5254,8 @@ width:100%;
 .cart-layout{
     display:grid;
     grid-template-columns:2fr 1fr;
-    gap:35px;
+    gap:50px;
+    align-items:start;
 }
 
 /* ================= LEFT ================= */
@@ -5398,6 +5399,7 @@ width:100%;
     padding:35px;
     box-shadow:0 15px 35px rgba(0,0,0,.08);
     position:sticky;
+    margin-top:20px;
     top:120px;
 }
 
