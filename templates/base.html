@@ -7,16 +7,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>VedaRoots</title>
+    <title>
+        {% block title %}
+        VedaRoots
+        {% endblock %}
+    </title>
 
     <!-- Main CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <!-- Page CSS -->
     {% block extra_css %}
     {% endblock %}
 
-    <!-- Swiper CSS -->
+    <!-- Swiper -->
     <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+        href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
 </head>
 
@@ -28,33 +34,55 @@
 
     <nav class="navbar">
 
-        <div class="logo">
+        <!-- Logo -->
+
+        <a href="{% url 'home' %}" class="logo">
             🌿 <span>VedaRoots</span>
-        </div>
+        </a>
+
+        <!-- Menu -->
 
         <ul class="nav-links">
 
-            <li><a href="/">Home</a></li>
+            <li><a href="{% url 'home' %}">Home</a></li>
+
             <li><a href="{% url 'shop' %}">Shop</a></li>
+
             <li><a href="{% url 'about' %}">About</a></li>
+
             <li><a href="{% url 'blogs' %}">Blogs</a></li>
+
             <li><a href="{% url 'contact' %}">Contact</a></li>
 
         </ul>
+
+        <!-- Right Buttons -->
 
         <div class="nav-icons">
 
             {% if user.is_authenticated %}
 
+                <a href="{% url 'wishlist' %}" class="cart-btn">
+                    ❤️ Wishlist
+                </a>
+
                 <a href="{% url 'profile' %}" class="account-btn">
                     👤 {{ user.username }}
                 </a>
 
-                <form action="{% url 'account_logout' %}" method="POST" style="display:inline;">
+                <a href="{% url 'cart' %}" class="cart-btn">
+                    🛒 Cart
+                </a>
+
+                <form action="{% url 'account_logout' %}"
+                      method="POST"
+                      style="display:inline;">
                     {% csrf_token %}
+
                     <button type="submit" class="login-btn">
                         Logout
                     </button>
+
                 </form>
 
             {% else %}
@@ -64,10 +92,6 @@
                 </a>
 
             {% endif %}
-
-            <a href="{% url 'cart' %}" class="cart-btn">
-                🛒 Cart
-            </a>
 
         </div>
 
@@ -88,7 +112,9 @@
 
 <footer>
 
-    <p>© 2026 VedaRoots. All Rights Reserved.</p>
+    <p>
+        © 2026 VedaRoots. All Rights Reserved.
+    </p>
 
 </footer>
 
@@ -98,65 +124,87 @@
 
 <script>
 
-const swiper = document.querySelector(".categorySwiper") ? new Swiper(".categorySwiper", {
+const slider=document.querySelector(".categorySwiper");
 
-    slidesPerView: 4,
-    spaceBetween: 30,
-    loop: true,
-    speed: 1200,
+if(slider){
 
-    autoplay: {
-        delay: 4000,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: true,
-    },
+    new Swiper(".categorySwiper",{
 
-    navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-    },
+        slidesPerView:4,
 
-    pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-    },
+        spaceBetween:30,
 
-    breakpoints: {
+        loop:true,
 
-        0: { slidesPerView: 1 },
+        speed:1200,
 
-        576: { slidesPerView: 2 },
+        autoplay:{
+            delay:4000,
+            disableOnInteraction:false,
+            pauseOnMouseEnter:true
+        },
 
-        768: { slidesPerView: 3 },
+        navigation:{
+            nextEl:".swiper-button-next",
+            prevEl:".swiper-button-prev",
+        },
 
-        1024: { slidesPerView: 4 }
+        pagination:{
+            el:".swiper-pagination",
+            clickable:true,
+        },
 
-    }
+        breakpoints:{
 
-}) : null;
+            0:{
+                slidesPerView:1
+            },
+
+            576:{
+                slidesPerView:2
+            },
+
+            768:{
+                slidesPerView:3
+            },
+
+            1024:{
+                slidesPerView:4
+            }
+
+        }
+
+    });
+
+}
 
 </script>
 
+<!-- ================= COUNTER ================= -->
+
 <script>
 
-document.querySelectorAll(".counter").forEach(counter => {
+document.querySelectorAll(".counter").forEach(counter=>{
 
-    const update = () => {
+    const target=parseInt(counter.dataset.target);
 
-        const target = +counter.dataset.target;
-        const current = +counter.innerText;
+    if(isNaN(target)) return;
 
-        const inc = target / 100;
+    const update=()=>{
 
-        if(current < target){
+        let current=parseInt(counter.innerText);
 
-            counter.innerText = Math.ceil(current + inc);
+        let increment=Math.ceil(target/100);
+
+        if(current<target){
+
+            counter.innerText=current+increment;
 
             setTimeout(update,20);
 
         }else{
 
-            counter.innerText = target;
+            counter.innerText=target;
 
         }
 
@@ -170,6 +218,8 @@ document.querySelectorAll(".counter").forEach(counter => {
 
 <script src="{% static 'js/main.js' %}"></script>
 
-</body>
+{% block extra_js %}
+{% endblock %}
 
+</body>
 </html>

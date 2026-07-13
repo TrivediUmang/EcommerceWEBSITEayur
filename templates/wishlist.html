@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}My Wishlist | VedaRoots{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/wishlist.css' %}">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+{% endblock %}
+
+{% block content %}
+
+<section class="wishlist-page">
+
+    <div class="wishlist-header">
+
+        <h1>❤️ My Wishlist</h1>
+
+        <p>Your favourite Ayurvedic products in one place.</p>
+
+    </div>
+
+    {% if items %}
+
+    <div class="wishlist-grid">
+
+        {% for item in items %}
+
+        <div class="wishlist-card">
+
+            <div class="wishlist-image">
+
+                {% if item.product.image %}
+                    <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                {% else %}
+                    <img src="{% static 'images/products/product1.png' %}">
+                {% endif %}
+
+            </div>
+
+            <div class="wishlist-content">
+
+                <h2>{{ item.product.name }}</h2>
+
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐
+                    <span>(4.9)</span>
+                </div>
+
+                <p class="price">
+                    ₹{{ item.product.price }}
+                </p>
+
+                <div class="wishlist-buttons">
+
+                    <a href="{% url 'add_to_cart' item.product.id %}" class="cart-btn">
+                        🛒 Add To Cart
+                    </a>
+
+                    <a href="{% url 'remove_from_wishlist' item.id %}" class="remove-btn">
+                        🗑 Remove
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% else %}
+
+    <div class="empty-wishlist">
+
+        <i class="fa-solid fa-heart-crack"></i>
+
+        <h2>Your Wishlist is Empty</h2>
+
+        <p>Add products you love and they'll appear here.</p>
+
+        <a href="{% url 'shop' %}" class="shop-btn">
+            🌿 Continue Shopping
+        </a>
+
+    </div>
+
+    {% endif %}
+
+</section>
+
+{% endblock %}

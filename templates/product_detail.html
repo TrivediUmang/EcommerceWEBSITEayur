@@ -138,19 +138,19 @@
 
             <div class="buttons">
 
-                <a href="{% url 'add_to_cart' product.id %}" class="cart-btn">
+    <a href="{% url 'add_to_cart' product.id %}" class="cart-btn">
+        🛒 Add To Cart
+    </a>
 
-                    🛒 Add To Cart
+    <a href="#" class="buy-btn">
+        ⚡ Buy Now
+    </a>
 
-                </a>
+    <a href="{% url 'add_to_wishlist' product.id %}" class="wishlist-btn">
+        ❤️ Wishlist
+    </a>
 
-                <a href="{% url 'cart' %}" class="buy-btn">
-
-                    ⚡ Buy Now
-
-                </a>
-
-            </div>
+</div>
 
             <!-- Delivery -->
 
