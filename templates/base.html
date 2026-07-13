@@ -4,142 +4,166 @@
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>
-{% block title %}
-VedaRoots
-{% endblock %}
-</title>
+    <title>
+        {% block title %}
+        VedaRoots
+        {% endblock %}
+    </title>
 
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-{% block extra_css %}
-{% endblock %}
+    <!-- Page CSS -->
+    {% block extra_css %}
+    {% endblock %}
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
-<link rel="stylesheet"
-href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <!-- Swiper -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
 </head>
 
 <body>
 
+<!-- ================= NAVBAR ================= -->
+
 <header>
 
 <nav class="navbar">
 
-<a href="{% url 'home' %}" class="logo">
-🌿 <span>VedaRoots</span>
-</a>
+    <!-- Logo -->
 
-<ul class="nav-links">
+    <a href="{% url 'home' %}" class="logo">
+        🌿 <span>VedaRoots</span>
+    </a>
 
-<li><a href="{% url 'home' %}">Home</a></li>
+    <!-- Menu -->
 
-<li><a href="{% url 'shop' %}">Shop</a></li>
+    <ul class="nav-links">
 
-<li><a href="{% url 'about' %}">About</a></li>
+        <li><a href="{% url 'home' %}">Home</a></li>
 
-<li><a href="{% url 'blogs' %}">Blogs</a></li>
+        <li><a href="{% url 'shop' %}">Shop</a></li>
 
-<li><a href="{% url 'contact' %}">Contact</a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
 
-</ul>
+        <li><a href="{% url 'blogs' %}">Blogs</a></li>
 
-<div class="nav-icons">
+        <li><a href="{% url 'contact' %}">Contact</a></li>
 
-{% if user.is_authenticated %}
+    </ul>
 
-<div class="profile-dropdown">
+    <!-- Right Side -->
 
-<button class="profile-btn">
+    <div class="nav-icons">
 
-<i class="fa-solid fa-user"></i>
+        {% if user.is_authenticated %}
 
-{{ user.username }}
+        <div class="profile-dropdown">
 
-<i class="fa-solid fa-chevron-down"></i>
+            <button class="profile-btn">
 
-</button>
+                <i class="fa-solid fa-user"></i>
 
-<div class="dropdown-menu">
+                {{ user.username }}
 
-<div class="dropdown-header">
+                <i class="fa-solid fa-chevron-down"></i>
 
-<h4>{{ user.get_full_name|default:user.username }}</h4>
+            </button>
 
-<p>{{ user.email }}</p>
+            <div class="dropdown-menu">
 
-</div>
+                <div class="dropdown-header">
 
-<a href="{% url 'profile' %}">
-<i class="fa-solid fa-house"></i>
-Dashboard
-</a>
+                    <h4>
+                        {{ user.get_full_name|default:user.username }}
+                    </h4>
 
-<a href="{% url 'my_orders' %}">
-<i class="fa-solid fa-box"></i>
-My Orders
-</a>
+                    <p>
+                        {{ user.email }}
+                    </p>
 
-<a href="{% url 'wishlist' %}">
-<i class="fa-solid fa-heart"></i>
-Wishlist
-</a>
+                </div>
 
-<a href="#">
-<i class="fa-solid fa-location-dot"></i>
-Saved Address
-</a>
+                <a href="{% url 'profile' %}">
+                    <i class="fa-solid fa-house"></i>
+                    Dashboard
+                </a>
 
-<a href="#">
-<i class="fa-solid fa-gear"></i>
-Settings
-</a>
+                <a href="{% url 'my_orders' %}">
+                    <i class="fa-solid fa-box"></i>
+                    My Orders
+                </a>
 
-<form action="{% url 'account_logout' %}" method="POST">
+                <a href="{% url 'wishlist' %}">
+                    <i class="fa-solid fa-heart"></i>
+                    Wishlist
+                </a>
 
-{% csrf_token %}
+                <a href="#">
+                    <i class="fa-solid fa-location-dot"></i>
+                    Saved Address
+                </a>
 
-<button type="submit">
+                <a href="#">
+                    <i class="fa-solid fa-gear"></i>
+                    Settings
+                </a>
 
-<i class="fa-solid fa-right-from-bracket"></i>
+                <form action="{% url 'account_logout' %}" method="POST">
 
-Logout
+                    {% csrf_token %}
 
-</button>
+                    <button type="submit">
 
-</form>
+                        <i class="fa-solid fa-right-from-bracket"></i>
 
-</div>
+                        Logout
 
-</div>
+                    </button>
 
-{% else %}
+                </form>
 
-<a href="{% url 'login' %}" class="login-btn">
+            </div>
 
-Login
+        </div>
 
-</a>
+        {% else %}
 
-{% endif %}
+        <a href="{% url 'login' %}" class="login-btn">
 
-<a href="{% url 'cart' %}" class="cart-btn">
+            <i class="fa-solid fa-right-to-bracket"></i>
 
-🛒 Cart
+            Login
 
-</a>
+        </a>
 
-</div>
+        {% endif %}
+
+        <!-- Cart Always Visible -->
+
+        <a href="{% url 'cart' %}" class="cart-btn">
+
+            <i class="fa-solid fa-cart-shopping"></i>
+
+            Cart
+
+        </a>
+
+    </div>
 
 </nav>
 
 </header>
+
+<!-- ================= MAIN ================= -->
 
 <main>
 
@@ -147,6 +171,8 @@ Login
 {% endblock %}
 
 </main>
+
+<!-- ================= FOOTER ================= -->
 
 <footer>
 
@@ -157,6 +183,8 @@ Login
 </p>
 
 </footer>
+
+<!-- ================= SWIPER ================= -->
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
@@ -177,29 +205,19 @@ loop:true,
 speed:1200,
 
 autoplay:{
-
 delay:4000,
-
 disableOnInteraction:false,
-
 pauseOnMouseEnter:true,
-
 },
 
 navigation:{
-
 nextEl:".swiper-button-next",
-
 prevEl:".swiper-button-prev",
-
 },
 
 pagination:{
-
 el:".swiper-pagination",
-
 clickable:true,
-
 },
 
 breakpoints:{
@@ -217,6 +235,42 @@ breakpoints:{
 });
 
 }
+
+</script>
+
+<!-- Counter Animation -->
+
+<script>
+
+document.querySelectorAll(".counter").forEach(counter=>{
+
+const target=parseInt(counter.dataset.target);
+
+if(isNaN(target)) return;
+
+const update=()=>{
+
+const current=parseInt(counter.innerText);
+
+const increment=Math.ceil(target/100);
+
+if(current<target){
+
+counter.innerText=current+increment;
+
+setTimeout(update,20);
+
+}else{
+
+counter.innerText=target;
+
+}
+
+}
+
+update();
+
+});
 
 </script>
 
