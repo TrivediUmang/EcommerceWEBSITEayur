@@ -236,3 +236,26 @@ def register(request):
 def add_to_cart(request, product_id):
 
     return redirect("shop")
+
+    # ===========================
+# PRODUCT DETAILS
+# ===========================
+
+def product_detail(request, product_id):
+
+    product = Product.objects.get(id=product_id)
+
+    related_products = Product.objects.filter(
+        category=product.category
+    ).exclude(id=product.id)[:4]
+
+    context = {
+        "product": product,
+        "related_products": related_products,
+    }
+
+    return render(
+        request,
+        "product_detail.html",
+        context
+    )

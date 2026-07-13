@@ -30,4 +30,9 @@ urlpatterns = [
         name="add_to_cart"
     ),
 
+    path(
+       "product/<int:product_id>/",
+       views.product_detail,
+       name="product_detail"
+),
 ]

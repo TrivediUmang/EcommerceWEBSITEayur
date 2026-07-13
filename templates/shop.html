@@ -89,52 +89,30 @@
                     </select>
 
                     <button type="submit">
-
                         Search
-
                     </button>
 
                 </form>
 
             </div>
 
-            <!-- Products -->
+            <!-- ================= PRODUCTS ================= -->
 
             <div class="shop-products">
 
                 {% for product in products %}
 
-                <div class="product-card">
+                <a href="{% url 'product_detail' product.id %}" class="product-card">
 
                     <div class="product-image">
 
                         <span class="product-badge">
-
                             Bestseller
-
                         </span>
 
                         <span class="wishlist">
-
                             ♡
-
                         </span>
-
-                        <!-- {% if product.image %}
-
-                        <img
-                            src="{% static product.image %}"
-                            alt="{{ product.name }}"
-                        >
-
-                        {% else %}
-
-                        <img
-                            src="{% static 'images/products/default.png' %}"
-                            alt="No Image"
-                        >
-
-                        {% endif %} -->
 
                         {% if product.image %}
                             <img src="{{ product.image.url }}" alt="{{ product.name }}">
@@ -146,11 +124,7 @@
 
                     <div class="product-info">
 
-                        <h3>
-
-                            {{ product.name }}
-
-                        </h3>
+                        <h3>{{ product.name }}</h3>
 
                         <div class="rating">
 
@@ -172,18 +146,15 @@
 
                         </p>
 
-                        <a
-                            href="{% url 'add_to_cart' product.id %}"
-                            class="add-cart-btn"
-                        >
+                        <div class="add-cart-btn">
 
                             🛒 Add To Cart
 
-                        </a>
+                        </div>
 
                     </div>
 
-                </div>
+                </a>
 
                 {% empty %}
 
