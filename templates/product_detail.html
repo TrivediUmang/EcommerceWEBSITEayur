@@ -1,0 +1,268 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ product.name }} | VedaRoots{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/product_detail.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+{% endblock %}
+
+{% block content %}
+
+<div class="product-page">
+
+    <!-- Breadcrumb -->
+
+    <div class="breadcrumb">
+
+        <a href="{% url 'home' %}">Home</a>
+
+        <span>/</span>
+
+        <a href="{% url 'shop' %}">Shop</a>
+
+        <span>/</span>
+
+        <strong>{{ product.name }}</strong>
+
+    </div>
+
+    <!-- Product Section -->
+
+    <div class="product-wrapper">
+
+        <!-- LEFT -->
+
+        <div class="product-gallery">
+
+            <div class="main-image">
+
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                {% else %}
+                    <img src="{% static 'images/products/product1.png' %}">
+                {% endif %}
+
+            </div>
+
+            <div class="thumbs">
+
+                {% if product.image %}
+                    <img src="{{ product.image.url }}">
+                    <img src="{{ product.image.url }}">
+                    <img src="{{ product.image.url }}">
+                    <img src="{{ product.image.url }}">
+                {% endif %}
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT -->
+
+        <div class="product-info">
+
+            <span class="badge">
+                Bestseller
+            </span>
+
+            <h1>
+
+                {{ product.name }}
+
+            </h1>
+
+            <div class="rating">
+
+                ⭐⭐⭐⭐⭐
+
+                <span>(4.8 • 245 Reviews)</span>
+
+            </div>
+
+            <div class="price-box">
+
+                <h2>
+
+                    ₹{{ product.price }}
+
+                </h2>
+
+                <del>
+
+                    ₹699
+
+                </del>
+
+                <span class="discount">
+
+                    28% OFF
+
+                </span>
+
+            </div>
+
+            <p class="stock">
+
+                ✅ In Stock
+
+            </p>
+
+            <p class="desc">
+
+                {{ product.description }}
+
+            </p>
+
+            <!-- Quantity -->
+
+            <div class="quantity">
+
+                <button>-</button>
+
+                <input type="text" value="1" readonly>
+
+                <button>+</button>
+
+            </div>
+
+            <!-- Buttons -->
+
+            <div class="buttons">
+
+                <a href="{% url 'add_to_cart' product.id %}" class="cart-btn">
+
+                    🛒 Add To Cart
+
+                </a>
+
+                <a href="#" class="buy-btn">
+
+                    ⚡ Buy Now
+
+                </a>
+
+            </div>
+
+            <!-- Delivery -->
+
+            <div class="delivery">
+
+                <h3>
+
+                    🚚 Delivery
+
+                </h3>
+
+                <p>
+
+                    Free Delivery in 2-4 Days
+
+                </p>
+
+                <p>
+
+                    Cash On Delivery Available
+
+                </p>
+
+                <p>
+
+                    Easy 7 Day Returns
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Description -->
+
+    <div class="details-section">
+
+        <h2>
+
+            🌿 Product Description
+
+        </h2>
+
+        <p>
+
+            {{ product.description }}
+
+        </p>
+
+    </div>
+
+    <!-- Benefits -->
+
+    <div class="details-section">
+
+        <h2>
+
+            💚 Benefits
+
+        </h2>
+
+        <ul>
+
+            <li>100% Ayurvedic Formula</li>
+
+            <li>No Harmful Chemicals</li>
+
+            <li>Suitable For Daily Use</li>
+
+            <li>Premium Quality Ingredients</li>
+
+        </ul>
+
+    </div>
+
+    <!-- Related Products -->
+
+    <div class="related">
+
+        <h2>
+
+            You May Also Like
+
+        </h2>
+
+        <div class="related-grid">
+
+            {% for item in related_products %}
+
+            <a href="{% url 'product_detail' item.id %}" class="related-card">
+
+                {% if item.image %}
+                    <img src="{{ item.image.url }}">
+                {% else %}
+                    <img src="{% static 'images/products/product1.png' %}">
+                {% endif %}
+
+                <h3>
+
+                    {{ item.name }}
+
+                </h3>
+
+                <p>
+
+                    ₹{{ item.price }}
+
+                </p>
+
+            </a>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
