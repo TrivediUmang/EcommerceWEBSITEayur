@@ -4,121 +4,159 @@
 
 <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>
-        {% block title %}
-        VedaRoots
-        {% endblock %}
-    </title>
+<title>
+{% block title %}
+VedaRoots
+{% endblock %}
+</title>
 
-    <!-- Main CSS -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-    <!-- Page CSS -->
-    {% block extra_css %}
-    {% endblock %}
+{% block extra_css %}
+{% endblock %}
 
-    <!-- Swiper -->
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
 </head>
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
-
 <header>
 
-    <nav class="navbar">
+<nav class="navbar">
 
-        <!-- Logo -->
+<a href="{% url 'home' %}" class="logo">
+🌿 <span>VedaRoots</span>
+</a>
 
-        <a href="{% url 'home' %}" class="logo">
-            🌿 <span>VedaRoots</span>
-        </a>
+<ul class="nav-links">
 
-        <!-- Menu -->
+<li><a href="{% url 'home' %}">Home</a></li>
 
-        <ul class="nav-links">
+<li><a href="{% url 'shop' %}">Shop</a></li>
 
-            <li><a href="{% url 'home' %}">Home</a></li>
+<li><a href="{% url 'about' %}">About</a></li>
 
-            <li><a href="{% url 'shop' %}">Shop</a></li>
+<li><a href="{% url 'blogs' %}">Blogs</a></li>
 
-            <li><a href="{% url 'about' %}">About</a></li>
+<li><a href="{% url 'contact' %}">Contact</a></li>
 
-            <li><a href="{% url 'blogs' %}">Blogs</a></li>
+</ul>
 
-            <li><a href="{% url 'contact' %}">Contact</a></li>
+<div class="nav-icons">
 
-        </ul>
+{% if user.is_authenticated %}
 
-        <!-- Right Buttons -->
+<div class="profile-dropdown">
 
-        <div class="nav-icons">
+<button class="profile-btn">
 
-            {% if user.is_authenticated %}
+<i class="fa-solid fa-user"></i>
 
-                <a href="{% url 'wishlist' %}" class="cart-btn">
-                    ❤️ Wishlist
-                </a>
+{{ user.username }}
 
-                <a href="{% url 'profile' %}" class="account-btn">
-                    👤 {{ user.username }}
-                </a>
+<i class="fa-solid fa-chevron-down"></i>
 
-                <a href="{% url 'cart' %}" class="cart-btn">
-                    🛒 Cart
-                </a>
+</button>
 
-                <form action="{% url 'account_logout' %}"
-                      method="POST"
-                      style="display:inline;">
-                    {% csrf_token %}
+<div class="dropdown-menu">
 
-                    <button type="submit" class="login-btn">
-                        Logout
-                    </button>
+<div class="dropdown-header">
 
-                </form>
+<h4>{{ user.get_full_name|default:user.username }}</h4>
 
-            {% else %}
+<p>{{ user.email }}</p>
 
-                <a href="{% url 'login' %}" class="login-btn">
-                    Login
-                </a>
+</div>
 
-            {% endif %}
+<a href="{% url 'profile' %}">
+<i class="fa-solid fa-house"></i>
+Dashboard
+</a>
 
-        </div>
+<a href="{% url 'my_orders' %}">
+<i class="fa-solid fa-box"></i>
+My Orders
+</a>
 
-    </nav>
+<a href="{% url 'wishlist' %}">
+<i class="fa-solid fa-heart"></i>
+Wishlist
+</a>
+
+<a href="#">
+<i class="fa-solid fa-location-dot"></i>
+Saved Address
+</a>
+
+<a href="#">
+<i class="fa-solid fa-gear"></i>
+Settings
+</a>
+
+<form action="{% url 'account_logout' %}" method="POST">
+
+{% csrf_token %}
+
+<button type="submit">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+Logout
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+{% else %}
+
+<a href="{% url 'login' %}" class="login-btn">
+
+Login
+
+</a>
+
+{% endif %}
+
+<a href="{% url 'cart' %}" class="cart-btn">
+
+🛒 Cart
+
+</a>
+
+</div>
+
+</nav>
 
 </header>
 
-<!-- ================= MAIN ================= -->
-
 <main>
 
-    {% block content %}
-    {% endblock %}
+{% block content %}
+{% endblock %}
 
 </main>
 
-<!-- ================= FOOTER ================= -->
-
 <footer>
 
-    <p>
-        © 2026 VedaRoots. All Rights Reserved.
-    </p>
+<p>
+
+© 2026 VedaRoots. All Rights Reserved.
+
+</p>
 
 </footer>
-
-<!-- ================= SWIPER ================= -->
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
@@ -128,91 +166,57 @@ const slider=document.querySelector(".categorySwiper");
 
 if(slider){
 
-    new Swiper(".categorySwiper",{
+new Swiper(".categorySwiper",{
 
-        slidesPerView:4,
+slidesPerView:4,
 
-        spaceBetween:30,
+spaceBetween:30,
 
-        loop:true,
+loop:true,
 
-        speed:1200,
+speed:1200,
 
-        autoplay:{
-            delay:4000,
-            disableOnInteraction:false,
-            pauseOnMouseEnter:true
-        },
+autoplay:{
 
-        navigation:{
-            nextEl:".swiper-button-next",
-            prevEl:".swiper-button-prev",
-        },
+delay:4000,
 
-        pagination:{
-            el:".swiper-pagination",
-            clickable:true,
-        },
+disableOnInteraction:false,
 
-        breakpoints:{
+pauseOnMouseEnter:true,
 
-            0:{
-                slidesPerView:1
-            },
+},
 
-            576:{
-                slidesPerView:2
-            },
+navigation:{
 
-            768:{
-                slidesPerView:3
-            },
+nextEl:".swiper-button-next",
 
-            1024:{
-                slidesPerView:4
-            }
+prevEl:".swiper-button-prev",
 
-        }
+},
 
-    });
+pagination:{
+
+el:".swiper-pagination",
+
+clickable:true,
+
+},
+
+breakpoints:{
+
+0:{slidesPerView:1},
+
+576:{slidesPerView:2},
+
+768:{slidesPerView:3},
+
+1024:{slidesPerView:4}
 
 }
 
-</script>
-
-<!-- ================= COUNTER ================= -->
-
-<script>
-
-document.querySelectorAll(".counter").forEach(counter=>{
-
-    const target=parseInt(counter.dataset.target);
-
-    if(isNaN(target)) return;
-
-    const update=()=>{
-
-        let current=parseInt(counter.innerText);
-
-        let increment=Math.ceil(target/100);
-
-        if(current<target){
-
-            counter.innerText=current+increment;
-
-            setTimeout(update,20);
-
-        }else{
-
-            counter.innerText=target;
-
-        }
-
-    }
-
-    update();
-
 });
+
+}
 
 </script>
 
@@ -222,4 +226,5 @@ document.querySelectorAll(".counter").forEach(counter=>{
 {% endblock %}
 
 </body>
+
 </html>
