@@ -12,7 +12,7 @@
 
 <div class="product-page">
 
-    <!-- Breadcrumb -->
+    <!-- ================= Breadcrumb ================= -->
 
     <div class="breadcrumb">
 
@@ -28,7 +28,7 @@
 
     </div>
 
-    <!-- Product Section -->
+    <!-- ================= Product ================= -->
 
     <div class="product-wrapper">
 
@@ -39,9 +39,13 @@
             <div class="main-image">
 
                 {% if product.image %}
-                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                    <img id="mainProductImage"
+                         src="{{ product.image.url }}"
+                         alt="{{ product.name }}">
                 {% else %}
-                    <img src="{% static 'images/products/product1.png' %}">
+                    <img id="mainProductImage"
+                         src="{% static 'images/products/product1.png' %}"
+                         alt="No Image">
                 {% endif %}
 
             </div>
@@ -49,10 +53,23 @@
             <div class="thumbs">
 
                 {% if product.image %}
-                    <img src="{{ product.image.url }}">
-                    <img src="{{ product.image.url }}">
-                    <img src="{{ product.image.url }}">
-                    <img src="{{ product.image.url }}">
+
+                    <img onclick="changeImage(this)"
+                         src="{{ product.image.url }}"
+                         alt="thumb">
+
+                    <img onclick="changeImage(this)"
+                         src="{{ product.image.url }}"
+                         alt="thumb">
+
+                    <img onclick="changeImage(this)"
+                         src="{{ product.image.url }}"
+                         alt="thumb">
+
+                    <img onclick="changeImage(this)"
+                         src="{{ product.image.url }}"
+                         alt="thumb">
+
                 {% endif %}
 
             </div>
@@ -67,38 +84,24 @@
                 Bestseller
             </span>
 
-            <h1>
-
-                {{ product.name }}
-
-            </h1>
+            <h1>{{ product.name }}</h1>
 
             <div class="rating">
 
                 ⭐⭐⭐⭐⭐
 
-                <span>(4.8 • 245 Reviews)</span>
+                <span>4.8 (245 Reviews)</span>
 
             </div>
 
             <div class="price-box">
 
-                <h2>
+                <h2>₹{{ product.price }}</h2>
 
-                    ₹{{ product.price }}
-
-                </h2>
-
-                <del>
-
-                    ₹699
-
-                </del>
+                <del>₹699</del>
 
                 <span class="discount">
-
                     28% OFF
-
                 </span>
 
             </div>
@@ -119,11 +122,15 @@
 
             <div class="quantity">
 
-                <button>-</button>
+                <button type="button">-</button>
 
-                <input type="text" value="1" readonly>
+                <input
+                    type="text"
+                    value="1"
+                    readonly
+                >
 
-                <button>+</button>
+                <button type="button">+</button>
 
             </div>
 
@@ -137,7 +144,7 @@
 
                 </a>
 
-                <a href="#" class="buy-btn">
+                <a href="{% url 'cart' %}" class="buy-btn">
 
                     ⚡ Buy Now
 
@@ -151,27 +158,17 @@
 
                 <h3>
 
-                    🚚 Delivery
+                    🚚 Delivery Information
 
                 </h3>
 
-                <p>
+                <p>✔ Free Delivery in 2-4 Days</p>
 
-                    Free Delivery in 2-4 Days
+                <p>✔ Cash On Delivery Available</p>
 
-                </p>
+                <p>✔ Easy 7 Day Returns</p>
 
-                <p>
-
-                    Cash On Delivery Available
-
-                </p>
-
-                <p>
-
-                    Easy 7 Day Returns
-
-                </p>
+                <p>✔ Secure Payment</p>
 
             </div>
 
@@ -179,15 +176,11 @@
 
     </div>
 
-    <!-- Description -->
+    <!-- ================= Description ================= -->
 
     <div class="details-section">
 
-        <h2>
-
-            🌿 Product Description
-
-        </h2>
+        <h2>🌿 Product Description</h2>
 
         <p>
 
@@ -197,19 +190,15 @@
 
     </div>
 
-    <!-- Benefits -->
+    <!-- ================= Benefits ================= -->
 
     <div class="details-section">
 
-        <h2>
-
-            💚 Benefits
-
-        </h2>
+        <h2>💚 Benefits</h2>
 
         <ul>
 
-            <li>100% Ayurvedic Formula</li>
+            <li>100% Natural Ayurvedic Formula</li>
 
             <li>No Harmful Chemicals</li>
 
@@ -217,19 +206,19 @@
 
             <li>Premium Quality Ingredients</li>
 
+            <li>Made With Herbal Extracts</li>
+
         </ul>
 
     </div>
 
-    <!-- Related Products -->
+    <!-- ================= Related Products ================= -->
+
+    {% if related_products %}
 
     <div class="related">
 
-        <h2>
-
-            You May Also Like
-
-        </h2>
+        <h2>You May Also Like</h2>
 
         <div class="related-grid">
 
@@ -238,22 +227,14 @@
             <a href="{% url 'product_detail' item.id %}" class="related-card">
 
                 {% if item.image %}
-                    <img src="{{ item.image.url }}">
+                    <img src="{{ item.image.url }}" alt="{{ item.name }}">
                 {% else %}
-                    <img src="{% static 'images/products/product1.png' %}">
+                    <img src="{% static 'images/products/product1.png' %}" alt="No Image">
                 {% endif %}
 
-                <h3>
+                <h3>{{ item.name }}</h3>
 
-                    {{ item.name }}
-
-                </h3>
-
-                <p>
-
-                    ₹{{ item.price }}
-
-                </p>
+                <p>₹{{ item.price }}</p>
 
             </a>
 
@@ -262,6 +243,8 @@
         </div>
 
     </div>
+
+    {% endif %}
 
 </div>
 

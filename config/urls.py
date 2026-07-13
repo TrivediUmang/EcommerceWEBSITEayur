@@ -30,6 +30,8 @@ urlpatterns = [
     # Orders
     path("orders/", include("orders.urls")),
 
+    path("wishlist/", include("wishlist.urls")),
+
 ]
 
 # Serve Media & Static Files (Development)

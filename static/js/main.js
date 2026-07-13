@@ -19,3 +19,52 @@ faqs.forEach(faq=>{
     });
 
 });
+
+// ===========================
+// Product Quantity
+// ===========================
+
+const qtyInput = document.querySelector(".quantity input");
+
+if (qtyInput) {
+
+    const buttons = document.querySelectorAll(".quantity button");
+
+    buttons[0].onclick = function () {
+
+        let qty = parseInt(qtyInput.value);
+
+        if (qty > 1) {
+            qty--;
+            qtyInput.value = qty;
+        }
+
+    };
+
+    buttons[1].onclick = function () {
+
+        let qty = parseInt(qtyInput.value);
+
+        qty++;
+
+        qtyInput.value = qty;
+
+    };
+
+}
+
+// ===========================
+// Product Image Change
+// ===========================
+
+function changeImage(image){
+
+    const main = document.getElementById("mainProductImage");
+
+    if(main){
+
+        main.src = image.src;
+
+    }
+
+}
