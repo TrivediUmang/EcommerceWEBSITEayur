@@ -16,6 +16,7 @@
     <aside class="sidebar">
 
         <div class="profile-card">
+
             <div class="avatar">
                 <i class="fa-solid fa-user"></i>
             </div>
@@ -25,31 +26,89 @@
             <p>{{ request.user.email }}</p>
 
             <a href="#" class="edit-btn">
-                Edit Profile
+                <i class="fa-solid fa-pen"></i> Edit Profile
             </a>
 
         </div>
 
         <ul class="menu">
-            <li class="active"><i class="fa-solid fa-house"></i> Dashboard</li>
-            <li><i class="fa-solid fa-box"></i> My Orders</li>
-            <li><i class="fa-solid fa-truck"></i> Track Orders</li>
-            <li><i class="fa-solid fa-heart"></i> Wishlist</li>
-            <li><i class="fa-solid fa-location-dot"></i> Saved Address</li>
-            <li><i class="fa-solid fa-gear"></i> Settings</li>
-            <li><i class="fa-solid fa-right-from-bracket"></i> Logout</li>
+
+            <li class="active">
+                <a href="{% url 'profile' %}">
+                    <i class="fa-solid fa-house"></i>
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="{% url 'my_orders' %}">
+                    <i class="fa-solid fa-box"></i>
+                    My Orders
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-truck"></i>
+                    Track Orders
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-heart"></i>
+                    Wishlist
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-location-dot"></i>
+                    Saved Address
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-gear"></i>
+                    Settings
+                </a>
+            </li>
+
+            <li>
+
+                <form action="{% url 'account_logout' %}" method="post">
+
+                    {% csrf_token %}
+
+                    <button class="logout-btn">
+
+                        <i class="fa-solid fa-right-from-bracket"></i>
+
+                        Logout
+
+                    </button>
+
+                </form>
+
+            </li>
+
         </ul>
 
     </aside>
 
-    <!-- Main -->
-    <main class="dashboard">
+    <!-- Dashboard -->
+
+    <section class="dashboard">
 
         <div class="welcome">
 
-            <h1>Welcome Back 👋</h1>
+            <h1>Welcome Back, {{ request.user.first_name|default:request.user.username }} 👋</h1>
 
-            <p>Your wellness journey starts here.</p>
+            <p>
+                Manage your VedaRoots account, orders, wishlist and addresses
+                from one place.
+            </p>
 
         </div>
 
@@ -57,26 +116,40 @@
 
             <div class="card">
                 <i class="fa-solid fa-box"></i>
-                <h2>12</h2>
-                <span>Orders</span>
+
+                <h2 class="counter" data-target="12">12</h2>
+
+                <span>Total Orders</span>
             </div>
 
             <div class="card">
+
                 <i class="fa-solid fa-heart"></i>
-                <h2>8</h2>
+
+                <h2 class="counter" data-target="8">8</h2>
+
                 <span>Wishlist</span>
+
             </div>
 
             <div class="card">
+
                 <i class="fa-solid fa-cart-shopping"></i>
-                <h2>3</h2>
-                <span>Cart</span>
+
+                <h2 class="counter" data-target="3">3</h2>
+
+                <span>Cart Items</span>
+
             </div>
 
             <div class="card">
+
                 <i class="fa-solid fa-wallet"></i>
+
                 <h2>₹8450</h2>
-                <span>Total Spend</span>
+
+                <span>Total Spent</span>
+
             </div>
 
         </div>
@@ -86,26 +159,50 @@
             <h2>Recent Orders</h2>
 
             <div class="order">
+
                 <div>
+
                     <strong>🌿 Hair Oil</strong>
+
                     <p>Delivered ✅</p>
+
                 </div>
 
                 <span>₹499</span>
+
             </div>
 
             <div class="order">
+
                 <div>
+
                     <strong>🌿 Neem Soap</strong>
+
                     <p>Shipped 🚚</p>
+
                 </div>
 
                 <span>₹299</span>
+
+            </div>
+
+            <div class="order">
+
+                <div>
+
+                    <strong>🌿 Face Pack</strong>
+
+                    <p>Processing ⏳</p>
+
+                </div>
+
+                <span>₹399</span>
+
             </div>
 
         </div>
 
-    </main>
+    </section>
 
 </div>
 
