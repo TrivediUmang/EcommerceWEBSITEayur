@@ -4,20 +4,24 @@ from . import views
 urlpatterns = [
 
     # Dashboard
-    path("", views.profile, name="profile"),
+    path(
+        "",
+        views.profile,
+        name="profile"
+    ),
 
-    # Saved Address
+    # Saved Addresses
     path(
         "addresses/",
         views.saved_addresses,
         name="saved_addresses"
     ),
 
+    # Add Address
+    path(
+        "addresses/add/",
+        views.add_address,
+        name="add_address"
+    ),
+
 ]
-
-path(
-    "addresses/add/",
-    views.add_address,
-    name="add_address"
-),
-
