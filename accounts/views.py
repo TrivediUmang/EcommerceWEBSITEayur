@@ -20,3 +20,25 @@ def saved_addresses(request):
             "addresses": addresses
         }
     )
+
+    from .models import Address
+
+@login_required
+def add_address(request):
+
+    if request.method == "POST":
+
+        Address.objects.create(
+            user=request.user,
+            full_name=request.POST["full_name"],
+            phone=request.POST["phone"],
+            house=request.POST["house"],
+            area=request.POST["area"],
+            city=request.POST["city"],
+            state=request.POST["state"],
+            pincode=request.POST["pincode"],
+        )
+
+        return redirect("saved_addresses")
+
+    return render(request, "accounts/add_address.html")

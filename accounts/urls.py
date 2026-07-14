@@ -14,3 +14,10 @@ urlpatterns = [
     ),
 
 ]
+
+path(
+    "addresses/add/",
+    views.add_address,
+    name="add_address"
+),
+
