@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Saved Addresses | VedaRoots{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/address.css' %}">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+{% endblock %}
+
+{% block content %}
+
+<section class="address-page">
+
+    <div class="address-header">
+
+        <h1>
+            📍 My Saved Addresses
+        </h1>
+
+        <p>
+            Manage your delivery addresses.
+        </p>
+
+        <a href="#" class="add-address-btn">
+            + Add New Address
+        </a>
+
+    </div>
+
+    {% if addresses %}
+
+        {% for address in addresses %}
+
+        <div class="address-card">
+
+            <h3>{{ address.full_name }}</h3>
+
+            <p>{{ address.house }}</p>
+
+            <p>{{ address.area }}</p>
+
+            <p>{{ address.city }}, {{ address.state }}</p>
+
+            <p>{{ address.pincode }}</p>
+
+            <p>{{ address.phone }}</p>
+
+            {% if address.is_default %}
+
+                <span class="default-badge">
+                    Default
+                </span>
+
+            {% endif %}
+
+            <div class="address-buttons">
+
+                <a href="#">
+                    Edit
+                </a>
+
+                <a href="#">
+                    Delete
+                </a>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+    <div class="empty-address">
+
+        <i class="fa-solid fa-location-dot"></i>
+
+        <h2>No Address Saved</h2>
+
+        <p>
+
+            Add your first delivery address.
+
+        </p>
+
+    </div>
+
+    {% endif %}
+
+</section>
+
+{% endblock %}
