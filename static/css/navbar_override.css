@@ -1,0 +1,173 @@
+/* ===== NAVBAR OVERRIDE ===== */
+
+header{
+    position:sticky !important;
+    top:0;
+    z-index:99999;
+    background:#fff !important;
+}
+
+.navbar{
+    width:92% !important;
+    margin:auto !important;
+    display:flex !important;
+    justify-content:space-between !important;
+    align-items:center !important;
+    height:85px !important;
+}
+
+.nav-links{
+    display:flex !important;
+    gap:35px !important;
+    list-style:none !important;
+}
+
+.nav-icons{
+    display:flex !important;
+    align-items:center !important;
+    gap:15px !important;
+}
+
+.profile-dropdown{
+    position:relative;
+}
+
+.profile-btn{
+    display:flex !important;
+    align-items:center;
+    gap:8px;
+
+    padding:12px 20px;
+
+    border:none;
+
+    border-radius:40px;
+
+    background:#f2f7f2;
+
+    color:#2E7D32;
+
+    font-weight:600;
+
+    cursor:pointer;
+}
+
+.dropdown-menu{
+
+    display:none;
+
+    position:absolute;
+
+    top:60px;
+
+    right:0;
+
+    width:270px;
+
+    background:#fff;
+
+    border-radius:15px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+
+    overflow:hidden;
+
+}
+
+.profile-dropdown:hover .dropdown-menu{
+
+    display:block;
+
+}
+
+.dropdown-menu a{
+
+    display:block;
+
+    padding:15px 20px;
+
+    color:#333;
+
+    text-decoration:none;
+
+}
+
+.dropdown-menu a:hover{
+
+    background:#f5f5f5;
+
+}
+
+.dropdown-header{
+
+    padding:20px;
+
+    background:#f8faf8;
+
+}
+
+.dropdown-header h4{
+
+    margin-bottom:5px;
+
+}
+
+.dropdown-header p{
+
+    font-size:13px;
+
+    color:#666;
+
+}
+
+.dropdown-menu form{
+
+    margin:0;
+
+}
+
+.dropdown-menu button{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    background:#fff;
+
+    cursor:pointer;
+
+    text-align:left;
+
+}
+
+.dropdown-menu button:hover{
+
+    background:#ffecec;
+
+}
+
+.cart-btn{
+
+    padding:12px 20px !important;
+
+    border-radius:40px !important;
+
+    background:#2E7D32 !important;
+
+    color:#fff !important;
+
+}
+
+.login-btn{
+
+    padding:12px 20px !important;
+
+    border-radius:40px !important;
+
+    background:#2E7D32 !important;
+
+    color:#fff !important;
+
+}
