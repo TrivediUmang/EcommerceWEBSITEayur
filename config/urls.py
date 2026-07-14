@@ -32,6 +32,8 @@ urlpatterns = [
 
     path("wishlist/", include("wishlist.urls")),
 
+    path("account/", include("accounts.urls")),
+
 ]
 
 # Serve Media & Static Files (Development)
