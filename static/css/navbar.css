@@ -1,0 +1,418 @@
+/* =====================================
+   VEDAROOTS PREMIUM NAVBAR
+===================================== */
+
+.navbar{
+
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:18px 7%;
+
+    background:#ffffff;
+
+    box-shadow:0 8px 30px rgba(0,0,0,.06);
+
+    position:sticky;
+    top:0;
+    z-index:99999;
+
+}
+
+.logo{
+
+    text-decoration:none;
+
+    font-size:32px;
+
+    font-weight:800;
+
+    color:#2E7D32;
+
+}
+
+.logo span{
+
+    color:#222;
+
+}
+
+.nav-links{
+
+    display:flex;
+
+    list-style:none;
+
+    gap:35px;
+
+}
+
+.nav-links a{
+
+    text-decoration:none;
+
+    color:#333;
+
+    font-weight:600;
+
+    transition:.3s;
+
+    position:relative;
+
+}
+
+.nav-links a:hover{
+
+    color:#2E7D32;
+
+}
+
+.nav-links a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-8px;
+
+    width:0;
+
+    height:3px;
+
+    border-radius:50px;
+
+    background:#2E7D32;
+
+    transition:.35s;
+
+}
+
+.nav-links a:hover::after{
+
+    width:100%;
+
+}
+
+.nav-icons{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+/* ===========================
+LOGIN
+=========================== */
+
+.login-btn{
+
+    background:#2E7D32;
+
+    color:#fff;
+
+    padding:12px 24px;
+
+    border:none;
+
+    border-radius:50px;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.login-btn:hover{
+
+    background:#1b5e20;
+
+}
+
+/* ===========================
+CART
+=========================== */
+
+.cart-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:12px 20px;
+
+    border-radius:50px;
+
+    background:#EDF8EF;
+
+    text-decoration:none;
+
+    color:#2E7D32;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.cart-btn:hover{
+
+    background:#2E7D32;
+
+    color:white;
+
+}
+
+/* ===========================
+PROFILE
+=========================== */
+
+.profile-dropdown{
+
+    position:relative;
+
+}
+
+.profile-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    border:none;
+
+    cursor:pointer;
+
+    background:#EDF8EF;
+
+    padding:12px 20px;
+
+    border-radius:50px;
+
+    color:#2E7D32;
+
+    font-weight:700;
+
+    transition:.3s;
+
+}
+
+.profile-btn:hover{
+
+    background:#2E7D32;
+
+    color:white;
+
+}
+
+/* ===========================
+DROPDOWN
+=========================== */
+
+.dropdown-menu{
+
+    position:absolute;
+
+    top:65px;
+
+    right:0;
+
+    width:320px;
+
+    background:white;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.15);
+
+    display:none;
+
+    animation:dropdown .25s ease;
+
+}
+
+.profile-dropdown:hover .dropdown-menu{
+
+    display:block;
+
+}
+
+.dropdown-header{
+
+    background:#F8FCF8;
+
+    padding:25px;
+
+    border-bottom:1px solid #eee;
+
+}
+
+.dropdown-header h4{
+
+    font-size:22px;
+
+    color:#222;
+
+    margin-bottom:5px;
+
+}
+
+.dropdown-header p{
+
+    color:#666;
+
+    font-size:14px;
+
+}
+
+.dropdown-menu a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:17px 24px;
+
+    text-decoration:none;
+
+    color:#333;
+
+    font-weight:600;
+
+    transition:.25s;
+
+}
+
+.dropdown-menu a:hover{
+
+    background:#EDF8EF;
+
+    color:#2E7D32;
+
+    padding-left:34px;
+
+}
+
+.dropdown-menu i{
+
+    width:20px;
+
+}
+
+/* ===========================
+LOGOUT
+=========================== */
+
+.dropdown-menu form{
+
+    margin:0;
+
+    border-top:1px solid #eee;
+
+}
+
+.dropdown-menu button{
+
+    width:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    border:none;
+
+    background:white;
+
+    padding:18px 24px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    transition:.3s;
+
+}
+
+.dropdown-menu button:hover{
+
+    background:#FFECEC;
+
+    color:#D32F2F;
+
+}
+
+/* ===========================
+ANIMATION
+=========================== */
+
+@keyframes dropdown{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(15px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ===========================
+RESPONSIVE
+=========================== */
+
+@media(max-width:992px){
+
+.nav-links{
+
+display:none;
+
+}
+
+.navbar{
+
+padding:15px 20px;
+
+}
+
+.logo{
+
+font-size:28px;
+
+}
+
+.dropdown-menu{
+
+width:280px;
+
+}
+
+}
