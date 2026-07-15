@@ -24,4 +24,11 @@ urlpatterns = [
         name="add_address"
     ),
 
+     path(
+        "settings/",
+        views.settings_view,
+        name="settings"
+
+     ),
+
 ]
