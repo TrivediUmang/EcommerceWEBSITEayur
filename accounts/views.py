@@ -9,7 +9,7 @@ def profile(request):
     return render(request, "accounts/profile.html")
 
 
-@login_required
+@login_required(login_url="login")
 def saved_addresses(request):
 
     addresses = request.user.addresses.all()
@@ -23,7 +23,7 @@ def saved_addresses(request):
     )
 
 
-@login_required
+@login_required(login_url="login")
 def add_address(request):
 
     if request.method == "POST":
@@ -51,3 +51,12 @@ def add_address(request):
         return redirect("saved_addresses")
 
     return render(request, "accounts/add_address.html")
+
+
+@login_required(login_url="login")
+def settings_view(request):
+
+    return render(
+        request,
+        "accounts/settings.html"
+    )
